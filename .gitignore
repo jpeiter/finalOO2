@@ -1,1 +1,7 @@
 .jar
+*.jpg
+*.png
+*.xml
+*.sql
+*.jasper
+*.jrxml
