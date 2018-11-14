@@ -49,7 +49,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Senha:");
 
-        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/aulaswing/image/login.png"))); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/login.png"))); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
