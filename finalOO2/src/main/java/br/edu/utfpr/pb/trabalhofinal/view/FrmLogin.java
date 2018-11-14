@@ -7,9 +7,8 @@ package br.edu.utfpr.pb.trabalhofinal.view;
 
 import br.edu.utfpr.pb.trabalhofinal.controller.UsuarioController;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-
-
 
 public class FrmLogin extends javax.swing.JFrame {
 
@@ -18,6 +17,7 @@ public class FrmLogin extends javax.swing.JFrame {
     public FrmLogin() {
         initComponents();
         usuarioController = new UsuarioController();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -58,6 +58,17 @@ public class FrmLogin extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,35 +109,21 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        try {
-            Usuario usuarioAutenticado
-                    = usuarioController.autenticarUsuario(
-                            txtEmail.getText(),
-                            txtSenha.getText()
-                    );
-            if (usuarioAutenticado != null) {
-                new FrmPrincipal(usuarioAutenticado).setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Usuário e/ou senha inválido(s).",
-                        "Atenção!",
-                        JOptionPane.ERROR_MESSAGE);
-                txtSenha.setText("");
-                txtEmail.grabFocus();
-                txtEmail.selectAll();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this,
-                    "Usuário e/ou senha inválido(s).",
-                    "Atenção!",
-                    JOptionPane.ERROR_MESSAGE);
-            txtSenha.setText("");
-            txtEmail.grabFocus();
-            txtEmail.selectAll();
-        }
+        login();
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        if ((JOptionPane.showConfirmDialog(null, "Deseja cancelar?", "Atenção!", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,4 +170,36 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    private void login() {
+        try {
+            Usuario usuarioAutenticado
+                    = usuarioController.autenticarUsuario(
+                            txtEmail.getText(),
+                            txtSenha.getText()
+                    );
+
+            if (usuarioAutenticado != null) {
+                new FrmPrincipal(usuarioAutenticado).setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Usuário e/ou senha inválido(s).",
+                        "Atenção!",
+                        JOptionPane.ERROR_MESSAGE);
+                txtSenha.setText("");
+                txtEmail.grabFocus();
+                txtEmail.selectAll();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                    "Usuário e/ou senha inválido(s).",
+                    "Atenção!",
+                    JOptionPane.ERROR_MESSAGE);
+            txtSenha.setText("");
+            txtEmail.grabFocus();
+            txtEmail.selectAll();
+        }
+    }
 }

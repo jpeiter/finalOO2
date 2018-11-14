@@ -25,6 +25,7 @@ public enum EPermissao {
                 return tp;
             }
         }
-        throw new IllegalArgumentException("Permissão Inválida");
+//        throw new IllegalArgumentException("Permissão Inválida");
+        return null;
     }
 }

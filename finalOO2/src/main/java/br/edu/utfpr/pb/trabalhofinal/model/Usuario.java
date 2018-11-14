@@ -21,7 +21,7 @@ import javax.validation.constraints.DecimalMin;
 @Table(name = "usuario")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findByEmailAndSenha",
-            query = "from Usuario u "
+            query = "Select u from Usuario u "
             + " where u.email=:email AND u.senha=:senha")
     ,
     @NamedQuery(name = "Usuario.findAll",

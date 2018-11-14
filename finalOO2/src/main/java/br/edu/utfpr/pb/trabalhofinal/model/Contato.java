@@ -20,6 +20,7 @@ public class Contato implements AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(length = 25, nullable = false)
@@ -31,7 +32,7 @@ public class Contato implements AbstractModel {
     @ManyToOne()
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-    
+
     @ManyToOne()
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;

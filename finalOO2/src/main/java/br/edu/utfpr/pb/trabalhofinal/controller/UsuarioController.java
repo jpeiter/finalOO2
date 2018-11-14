@@ -20,7 +20,5 @@ public class UsuarioController extends GenericController<Usuario, Long> {
     public Usuario autenticarUsuario(String email, String senha) {
         return this.usuarioDao.findByEmailAndSenhaNamedQuery(email, senha);
     }
-    
-    
 
 }

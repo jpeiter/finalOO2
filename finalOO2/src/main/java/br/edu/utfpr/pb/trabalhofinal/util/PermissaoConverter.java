@@ -5,11 +5,11 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
-*
-* @author jpeit
-*/
+ *
+ * @author jpeit
+ */
 @Converter(autoApply = true)
-public class PermissaoConverter implements AttributeConverter<EPermissao, Integer>{
+public class PermissaoConverter implements AttributeConverter<EPermissao, Integer> {
 
     @Override
     public Integer convertToDatabaseColumn(EPermissao attribute) {

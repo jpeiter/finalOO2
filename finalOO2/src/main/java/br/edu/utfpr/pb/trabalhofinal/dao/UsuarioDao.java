@@ -20,7 +20,6 @@ public class UsuarioDao extends GenericDao<Usuario, Long> {
 
     public List<Usuario> findAll() {
         Query query = em.createNamedQuery(Usuario.FIND_ALL);
-
         return query.getResultList();
     }
 }
