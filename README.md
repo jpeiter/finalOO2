@@ -52,13 +52,21 @@ A principal funcionalidade solicitada pelo sr. Neves é o controle de vendas e r
  A modelagem do banco é de responsabilidade do desenvolvedor do sistema. Abaixo serão listados alguns exemplos de entidades e campos, entretanto o desenvolvedor deverá normalizar.
 
 **Usuário:** {nome, cpf, salário, comissão, foto, email, senha}
+
 **Cliente:** {nome, cpf, CIDADE, CONTATOS, endereço, cep}
+
 **Categoria:** {descrição}
+
 **Produto:** {nome, valor, descrição, CATEGORIA}
+
 **Venda:** {número do pedido, data, CLIENTE, USUARIO}
+
 **Venda Produto:** {PRODUTO, VENDA, quantidade, valor}
+
 **Conta Receber:** {VENDA, data, valor, número_recibo, TIPO_RECEBIMENTO}
+
 **Fornecedor:** {nome, cnpj, CIDADE, telefone, endereço}
+
 **Conta Pagar:** {FORNECEDOR, data_vencimento, data_pagamento, valor, valor pago, TIPO_PAGAMENTO, USUARIO}
 
 ## Avaliação*:
