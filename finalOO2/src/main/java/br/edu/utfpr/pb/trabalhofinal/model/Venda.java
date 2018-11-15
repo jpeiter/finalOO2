@@ -30,8 +30,6 @@ public class Venda implements AbstractModel, Serializable {
     @Column(nullable = false)
     private LocalDate data;
 
-    private LocalDate dataEntrega;
-
     @ManyToOne()
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;
@@ -79,14 +77,6 @@ public class Venda implements AbstractModel, Serializable {
 
     public void setData(LocalDate data) {
         this.data = data;
-    }
-
-    public LocalDate getDataEntrega() {
-        return dataEntrega;
-    }
-
-    public void setDataEntrega(LocalDate dataEntrega) {
-        this.dataEntrega = dataEntrega;
     }
 
     public Cliente getCliente() {

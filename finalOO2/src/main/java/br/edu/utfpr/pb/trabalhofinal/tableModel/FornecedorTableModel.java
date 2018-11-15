@@ -1,20 +1,20 @@
 package br.edu.utfpr.pb.trabalhofinal.tableModel;
 
-import br.edu.utfpr.pb.trabalhofinal.model.Cliente;
+import br.edu.utfpr.pb.trabalhofinal.model.Fornecedor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class ClienteTableModel extends AbstractTableModel {
+public class FornecedorTableModel extends AbstractTableModel {
 
-    private List<Cliente> lista;
-    private String[] columns = {"Código", "Nome", "CPF", "Cidade", "Estado"};
+    private List<Fornecedor> lista;
+    private String[] columns = {"Código", "Nome", "CNPJ", "Telefone"};
 
-    public ClienteTableModel() {
+    public FornecedorTableModel() {
         lista = new ArrayList<>();
     }
 
-    public ClienteTableModel(List<Cliente> lista) {
+    public FornecedorTableModel(List<Fornecedor> lista) {
         this.lista = lista;
     }
 
@@ -36,11 +36,9 @@ public class ClienteTableModel extends AbstractTableModel {
             case 1:
                 return lista.get(rowIndex).getNome();
             case 2:
-                return lista.get(rowIndex).getCpf();
+                return lista.get(rowIndex).getCnpj();
             case 3:
-                return lista.get(rowIndex).getCidade().getNome();
-            case 4:
-                return lista.get(rowIndex).getCidade().getEstado().getSigla();
+                return lista.get(rowIndex).getTelefone();
             default:
                 return null;
         }

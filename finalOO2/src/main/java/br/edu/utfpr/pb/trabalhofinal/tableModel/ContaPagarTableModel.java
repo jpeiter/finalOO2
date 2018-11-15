@@ -1,20 +1,20 @@
 package br.edu.utfpr.pb.trabalhofinal.tableModel;
 
-import br.edu.utfpr.pb.trabalhofinal.model.Cidade;
+import br.edu.utfpr.pb.trabalhofinal.model.ContaPagar;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class CidadeTableModel extends AbstractTableModel {
+public class ContaPagarTableModel extends AbstractTableModel {
 
-    private List<Cidade> lista;
-    private String[] columns = {"Código", "Nome", "Estado"};
+    private List<ContaPagar> lista;
+    private String[] columns = {"Código", "Fornecedor", "Valor", "Valor Pago", "Data Vencimento", "Data Pagamento"};
 
-    public CidadeTableModel() {
+    public ContaPagarTableModel() {
         lista = new ArrayList<>();
     }
 
-    public CidadeTableModel(List<Cidade> lista) {
+    public ContaPagarTableModel(List<ContaPagar> lista) {
         this.lista = lista;
     }
 
@@ -34,9 +34,15 @@ public class CidadeTableModel extends AbstractTableModel {
             case 0:
                 return lista.get(rowIndex).getId();
             case 1:
-                return lista.get(rowIndex).getNome();
+                return lista.get(rowIndex).getFornecedor().getNome();
             case 2:
-                return lista.get(rowIndex).getEstado().getNome();
+                return lista.get(rowIndex).getValor();
+            case 3:
+                return lista.get(rowIndex).getValorPago();
+            case 4:
+                return lista.get(rowIndex).getDataVencimento();
+            case 5:
+                return lista.get(rowIndex).getDataPagamento();
             default:
                 return null;
         }

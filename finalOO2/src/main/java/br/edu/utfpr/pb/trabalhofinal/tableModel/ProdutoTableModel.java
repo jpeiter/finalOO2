@@ -5,7 +5,7 @@
  */
 package br.edu.utfpr.pb.trabalhofinal.tableModel;
 
-import br.edu.utfpr.pb.trabalhofinal.model.Estado;
+import br.edu.utfpr.pb.trabalhofinal.model.Produto;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,10 +13,10 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author jpeit
  */
-public class EstadoTableModel extends AbstractTableModel {
+public class ProdutoTableModel extends AbstractTableModel {
 
-    private List<Estado> lista;
-    private String[] colunas = {"Código", "Nome", "Sigla"};
+    private List<Produto> lista;
+    private String[] colunas = {"Código", "Nome", "Categoria", "Valor"};
 
     @Override
     public int getRowCount() {
@@ -36,7 +36,9 @@ public class EstadoTableModel extends AbstractTableModel {
             case 1:
                 return lista.get(rowIndex).getNome();
             case 2:
-                return lista.get(rowIndex).getSigla();
+                return lista.get(rowIndex).getCategoria().getDescricao();
+            case 3:
+                return lista.get(rowIndex).getValor();
             default:
                 return null;
         }
@@ -47,18 +49,18 @@ public class EstadoTableModel extends AbstractTableModel {
         return this.colunas[column];
     }
 
-    public EstadoTableModel() {
+    public ProdutoTableModel() {
     }
 
-    public EstadoTableModel(List<Estado> lista) {
+    public ProdutoTableModel(List<Produto> lista) {
         this.lista = lista;
     }
 
-    public List<Estado> getLista() {
+    public List<Produto> getLista() {
         return lista;
     }
 
-    public void setLista(List<Estado> lista) {
+    public void setLista(List<Produto> lista) {
         this.lista = lista;
     }
 

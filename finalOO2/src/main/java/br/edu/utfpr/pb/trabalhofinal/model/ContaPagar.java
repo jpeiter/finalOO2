@@ -34,7 +34,7 @@ public class ContaPagar implements AbstractModel {
     @Column(name = "dataVencimento", nullable = false)
     private LocalDate dataVencimento;
 
-    @Column(name = "dataPagamento", nullable = false)
+    @Column(name = "dataPagamento", nullable = true)
     private LocalDate dataPagamento;
 
     @Column(name = "valor", nullable = false)

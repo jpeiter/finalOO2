@@ -1,20 +1,20 @@
 package br.edu.utfpr.pb.trabalhofinal.tableModel;
 
-import br.edu.utfpr.pb.trabalhofinal.model.Cidade;
+import br.edu.utfpr.pb.trabalhofinal.model.Categoria;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class CidadeTableModel extends AbstractTableModel {
+public class CategoriaTableModel extends AbstractTableModel {
 
-    private List<Cidade> lista;
-    private String[] columns = {"Código", "Nome", "Estado"};
+    private List<Categoria> lista;
+    private String[] columns = {"Código", "Descrição"};
 
-    public CidadeTableModel() {
+    public CategoriaTableModel() {
         lista = new ArrayList<>();
     }
 
-    public CidadeTableModel(List<Cidade> lista) {
+    public CategoriaTableModel(List<Categoria> lista) {
         this.lista = lista;
     }
 
@@ -34,9 +34,7 @@ public class CidadeTableModel extends AbstractTableModel {
             case 0:
                 return lista.get(rowIndex).getId();
             case 1:
-                return lista.get(rowIndex).getNome();
-            case 2:
-                return lista.get(rowIndex).getEstado().getNome();
+                return lista.get(rowIndex).getDescricao();
             default:
                 return null;
         }
