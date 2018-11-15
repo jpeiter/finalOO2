@@ -6,3 +6,5 @@
 *.jasper
 *.jrxml
 *.properties
+*.netbeans_automatic_build
+*.class
