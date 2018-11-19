@@ -22,4 +22,15 @@ public class UsuarioDao extends GenericDao<Usuario, Long> {
         Query query = em.createNamedQuery(Usuario.FIND_ALL);
         return query.getResultList();
     }
+
+    public List<Usuario> findByNome(String nome) {
+        Query query = em.createQuery("SELECT u "
+                + "FROM Usuario u "
+                + "WHERE UPPER(u.nome) "
+                + "LIKE :nome "
+                + "ORDER BY u.nome");
+        query.setParameter("nome", "%" + nome.toUpperCase() + "%");
+
+        return query.getResultList();
+    }
 }

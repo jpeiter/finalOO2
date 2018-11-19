@@ -72,13 +72,13 @@ INSERT INTO produto (nome, descricao, valor, categoria_id) VALUES ('Smarpthone S
 INSERT INTO produto (nome, descricao, valor, categoria_id) VALUES ('Home Theater LG LHB655NW', 'O novo Home Theater LG LHB655NW possui 5.1 canais de áudio e 1000W RMS de potência,...', 1899.99, 2);
 INSERT INTO produto (nome, descricao, valor, categoria_id) VALUES ('Processador Core I9', 'Processador Intel Core I9 4.3Ghz...', 7099.99, 1);
 
-INSERT INTO venda(data, dataentrega, numeropedido, cliente_id) VALUES ('2018-03-20', '2018-03-21', '123456', 1);
+INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-03-20', '123456', 1);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (1, 225, 1, 1);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (3, 400, 2, 1);
     
-INSERT INTO venda(data, dataentrega, numeropedido, cliente_id) VALUES ('2018-04-12', '2018-04-12', '2254', 2);
+INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-04-12', '2254', 2);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 2);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (4, 225, 1, 2);
 
-INSERT INTO venda(data, dataentrega, numeropedido, cliente_id) VALUES ('2018-05-15', '2018-05-15', '3214', 3);
+INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-05-15', '3214', 3);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 3);

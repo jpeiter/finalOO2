@@ -60,7 +60,7 @@ public class Usuario implements AbstractModel, Serializable {
     private String senha;
 
     @Convert(converter = PermissaoConverter.class)
-    private List<EPermissao> permissoes;
+    private EPermissao permissoes;
 
     public Long getId() {
         return id;
@@ -102,11 +102,11 @@ public class Usuario implements AbstractModel, Serializable {
         this.comissao = comissao;
     }
 
-    public List<EPermissao> getPermissoes() {
+    public EPermissao getPermissoes() {
         return permissoes;
     }
 
-    public void setPermissoes(List<EPermissao> permissoes) {
+    public void setPermissoes(EPermissao permissoes) {
         this.permissoes = permissoes;
     }
 

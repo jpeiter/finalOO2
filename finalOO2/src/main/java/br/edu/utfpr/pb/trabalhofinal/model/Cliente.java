@@ -80,6 +80,14 @@ public class Cliente implements AbstractModel {
         this.cidade = cidade;
     }
 
+    public List<Contato> getContatos() {
+        return contatos;
+    }
+
+    public void setContatos(List<Contato> contatos) {
+        this.contatos = contatos;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;

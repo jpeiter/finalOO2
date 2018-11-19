@@ -17,26 +17,26 @@ import javax.swing.Timer;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class FrmPrincipal extends javax.swing.JFrame {
-
+    
     private Timer timer;
     private String titulo = "";
     private Usuario usuarioLogado;
-
+    
     public FrmPrincipal() {
         initComponents();
         DatabaseConnection.getInstance().getConnection();
-
+        
         timer = new Timer(1000, (ActionEvent e) -> {
             SimpleDateFormat sdf
                     = new SimpleDateFormat("HH:mm:ss");
             this.setTitle(titulo + sdf.format(new Date()));
         });
-
+        
         timer.start();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        
     }
-
+    
     FrmPrincipal(Usuario usuario) {
         initComponents();
         this.usuarioLogado = usuario;
@@ -46,7 +46,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             this.setTitle(titulo + sdf.format(new Date())
                     + " - Usuário: " + this.usuarioLogado.getNome());
         });
-
+        
         timer.start();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
@@ -67,6 +67,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuCidade = new javax.swing.JMenuItem();
         menuEstado = new javax.swing.JMenuItem();
         menuCliente = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuProdtCateg = new javax.swing.JMenuItem();
         menuVendas = new javax.swing.JMenuItem();
@@ -113,6 +114,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menuCliente);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Usuário");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         menuRelatorios.setText("Relatórios");
@@ -154,14 +164,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void menuCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCidadeActionPerformed
         try {
             FrmCidadeLista frm = new FrmCidadeLista();
-
+            
             Dimension size = jDesktopPane1.getSize();
             Dimension fSize = frm.getSize();
-
+            
             frm.setLocation(
                     (size.width - fSize.width) / 2,
                     (size.height - fSize.height) / 2);
-
+            
             jDesktopPane1.add(frm);
             frm.setVisible(true);
             frm.moveToFront();
@@ -174,14 +184,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void menuEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEstadoActionPerformed
         try {
             FrmEstadoLista frm = new FrmEstadoLista();
-
+            
             Dimension size = jDesktopPane1.getSize();
             Dimension fSize = frm.getSize();
-
+            
             frm.setLocation(
                     (size.width - fSize.width) / 2,
                     (size.height - fSize.height) / 2);
-
+            
             jDesktopPane1.add(frm);
             frm.setVisible(true);
             frm.moveToFront();
@@ -194,14 +204,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
         try {
             FrmClienteLista frm = new FrmClienteLista();
-
+            
             Dimension size = jDesktopPane1.getSize();
             Dimension fSize = frm.getSize();
-
+            
             frm.setLocation(
                     (size.width - fSize.width) / 2,
                     (size.height - fSize.height) / 2);
-
+            
             jDesktopPane1.add(frm);
             frm.setVisible(true);
             frm.moveToFront();
@@ -213,13 +223,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void menuProdtCategActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdtCategActionPerformed
         String categoria = JOptionPane.showInputDialog(null, "Informe a categoria pra visualizar os produtos", JOptionPane.QUESTION_MESSAGE);
-
+        
         GerarRelatorio relatorio = new GerarRelatorio();
         InputStream arquivo = this.getClass().getResourceAsStream("/reports/ativswing-produtosCategoria.jasper");
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("CATEGORIA", categoria);
         parametros.put("TITULO", "Produtos por Categoria");
-
+        
         DatabaseConnection conn = DatabaseConnection.getInstance();
         JasperViewer viewer;
         try {
@@ -237,9 +247,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void menuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasActionPerformed
         String clienteOuData = JOptionPane.showInputDialog(null, "Informe o nome do cliente ou a data desejada", JOptionPane.QUESTION_MESSAGE);
-
+        
         for (char c : clienteOuData.toCharArray()) {
-
+            
         }
         GerarRelatorio relatorio = new GerarRelatorio();
         InputStream arquivo = this.getClass().getResourceAsStream("/reports/ativswing-vendas-itens.jasper");
@@ -247,7 +257,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         parametros.put("CLIENTE", clienteOuData);
         parametros.put("TITULO", "Relatório de Vendas");
         parametros.put("DATA", new Date());
-
+        
         DatabaseConnection conn = DatabaseConnection.getInstance();
         JasperViewer viewer;
         try {
@@ -262,6 +272,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao exibir relatório!", "Atenção!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_menuVendasActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            FrmUsuarioLista frm = new FrmUsuarioLista();
+            
+            Dimension size = jDesktopPane1.getSize();
+            Dimension fSize = frm.getSize();
+            
+            frm.setLocation(
+                    (size.width - fSize.width) / 2,
+                    (size.height - fSize.height) / 2
+            );
+            
+            jDesktopPane1.add(frm);
+            frm.setVisible(true);
+            frm.moveToFront();
+            frm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        
+        FrmUsuarioLista frm = new FrmUsuarioLista();
+        
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,6 +340,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuCidade;
     private javax.swing.JMenuItem menuCliente;
     private javax.swing.JMenuItem menuEstado;

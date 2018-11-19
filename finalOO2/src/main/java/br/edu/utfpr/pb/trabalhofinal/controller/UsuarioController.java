@@ -3,6 +3,7 @@ package br.edu.utfpr.pb.trabalhofinal.controller;
 import br.edu.utfpr.pb.trabalhofinal.dao.UsuarioDao;
 import br.edu.utfpr.pb.trabalhofinal.dao.GenericDao;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
+import java.util.List;
 
 public class UsuarioController extends GenericController<Usuario, Long> {
 
@@ -19,6 +20,10 @@ public class UsuarioController extends GenericController<Usuario, Long> {
 
     public Usuario autenticarUsuario(String email, String senha) {
         return this.usuarioDao.findByEmailAndSenhaNamedQuery(email, senha);
+    }
+
+    public List<Usuario> findByNome(String nome) {
+        return this.usuarioDao.findByNome(nome);
     }
 
 }

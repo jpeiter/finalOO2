@@ -5,9 +5,9 @@ package br.edu.utfpr.pb.trabalhofinal.enums;
  * @author jpeit
  */
 public enum EPermissao {
-    ADMIN(1),
-    VENDEDOR(2),
-    FINANCEIRO(3);
+    ADMIN(0),
+    VENDEDOR(1),
+    FINANCEIRO(2);
 
     private final Integer id;
 
@@ -25,7 +25,6 @@ public enum EPermissao {
                 return tp;
             }
         }
-//        throw new IllegalArgumentException("Permissão Inválida");
         return null;
     }
 }
