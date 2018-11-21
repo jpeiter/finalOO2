@@ -13,7 +13,7 @@ public class ProdutoDao extends GenericDao<Produto, Long> {
     public List<Produto> findProdutosByNome(String nome) {
         Query query = em.createQuery("SELECT p "
                 + "FROM Produto p "
-                + "WHERE p.nome LIKE :nome ORDER BY c.nome");
+                + "WHERE p.nome LIKE :nome ORDER BY p.nome");
         query.setParameter("nome", "%" + nome + "%");
         return query.getResultList();
     }
@@ -21,7 +21,7 @@ public class ProdutoDao extends GenericDao<Produto, Long> {
     public List<Produto> findProdutosByValor(Double valor) {
         Query query = em.createQuery("SELECT p "
                 + "FROM Produto p "
-                + "WHERE p.valor = :valor ORDER BY c.valor");
+                + "WHERE p.valor = :valor ORDER BY p.valor");
         query.setParameter("valor", valor);
         return query.getResultList();
     }

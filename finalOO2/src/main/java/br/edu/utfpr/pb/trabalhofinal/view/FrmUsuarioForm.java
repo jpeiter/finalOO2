@@ -32,6 +32,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
             cmbPermissaoModel.addElement(perm);
         }
         cmbPermissao.setModel(cmbPermissaoModel);
+        cmbPermissao.setSelectedIndex(-1);
 
     }
 
@@ -196,7 +197,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cadastro", jPanel1);
+        jTabbedPane1.addTab("Dados Pessoais", jPanel1);
 
         pnlUser.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do usuário"));
 
@@ -276,7 +277,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
             .addComponent(pnlUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Usuário", jPanel5);
+        jTabbedPane1.addTab("Dados do Usuário", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -479,13 +480,17 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
     }
 
     private boolean podeSalvar() throws Exception {
-        if (txtNome.getText().isEmpty() || txtCpf.getText().isEmpty() || txtEmail.getText().isEmpty()
-                || txtSenha.getText().isEmpty() || txtSalario.getText().isEmpty() || txtComissao.getText().isEmpty()) {
+        if (txtNome.getText().isEmpty() || txtCpf.getText().isEmpty()
+                || txtEmail.getText().isEmpty() || txtSenha.getText().isEmpty()
+                || txtSalario.getText().isEmpty() || txtComissao.getText().isEmpty()
+                || (cmbPermissao.getSelectedIndex() == -1)) {
             throw new Exception("Preencha todos os campos obrigatórios!");
-        }
-        if (!txtConfSenha.getText().isEmpty()) {
-            if (!txtSenha.getText().equals(txtConfSenha.getText())) {
-                throw new Exception("As senhas são diferentes!");
+        } else if (!txtConfSenha.getText().isEmpty()) {
+            if (txtConfSenha.getText().equals(usuario.getSenha())) {
+                if (!txtSenha.getText().equals(txtConfSenha.getText())) {
+                    throw new Exception("As senhas são diferentes!");
+                }
+                throw new Exception("Confirme a nova senha!");
             }
         }
 

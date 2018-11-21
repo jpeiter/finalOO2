@@ -19,7 +19,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class FrmPrincipal extends javax.swing.JFrame {
 
     private Timer timer;
-    private String titulo = "";
+    private String titulo = "Snow's Store";
     private Usuario usuarioLogado;
 
     public FrmPrincipal() {
@@ -69,6 +69,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuCliente = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenuItem();
         menuCategoria = new javax.swing.JMenuItem();
+        menuProduto = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuProdtCateg = new javax.swing.JMenuItem();
         menuVendas = new javax.swing.JMenuItem();
@@ -132,6 +133,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(menuCategoria);
+
+        menuProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuProduto.setText("Produto");
+        menuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuProduto);
 
         jMenuBar1.add(jMenu1);
 
@@ -322,6 +332,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuCategoriaActionPerformed
 
+    private void menuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoActionPerformed
+        try {
+            FrmProdutoLista frm = new FrmProdutoLista();
+            Dimension size = jDesktopPane1.getSize();
+            Dimension fSize = frm.getSize();
+            frm.setLocation(
+                    (size.width - fSize.width) / 2,
+                    (size.height - fSize.height) / 2
+            );
+            jDesktopPane1.add(frm);
+            frm.setVisible(true);
+            frm.moveToFront();
+            frm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_menuProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,6 +397,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCliente;
     private javax.swing.JMenuItem menuEstado;
     private javax.swing.JMenuItem menuProdtCateg;
+    private javax.swing.JMenuItem menuProduto;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenuItem menuUsuario;
     private javax.swing.JMenuItem menuVendas;

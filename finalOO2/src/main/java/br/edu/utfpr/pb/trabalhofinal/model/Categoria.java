@@ -19,7 +19,7 @@ public class Categoria implements AbstractModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
+
     @Column(name = "descricao", length = 50, nullable = false)
     private String descricao;
 
@@ -45,6 +45,11 @@ public class Categoria implements AbstractModel {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return this.getDescricao();
     }
 
     @Override

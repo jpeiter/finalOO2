@@ -10,34 +10,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "produto")
-public class Produto implements AbstractModel{
+public class Produto implements AbstractModel {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @NotEmpty(message = "O campo nome deve ser preenchido.")
-    @NotNull(message = "O campo nome deve ser preenchido.")
+
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
-    
-    @NotEmpty(message = "O campo descrição deve ser preenchido.")
-    @Column(name = "descricao", length = 500, nullable = false)
+
+    @Column(name = "descricao", length = 500, nullable = true)
     private String descricao;
-    
-    @DecimalMin(value = "0.01", 
+
+    @DecimalMin(value = "0.01",
             message = "O valor deve ser maior que R$ 0.00.")
     @Column(name = "valor")
     private Double valor;
-    
+
     @ManyToOne()
-    @JoinColumn(name="categoria_id", referencedColumnName = "id")
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Categoria categoria;
 
     public Long getId() {
@@ -104,6 +100,5 @@ public class Produto implements AbstractModel{
         }
         return true;
     }
-    
-    
+
 }

@@ -116,8 +116,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Cadastro">
-                <Property name="tabTitle" type="java.lang.String" value="Cadastro"/>
+              <JTabbedPaneConstraints tabName="Dados Pessoais">
+                <Property name="tabTitle" type="java.lang.String" value="Dados Pessoais"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -252,8 +252,8 @@
         <Container class="javax.swing.JPanel" name="jPanel5">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Usu&#xe1;rio">
-                <Property name="tabTitle" type="java.lang.String" value="Usu&#xe1;rio"/>
+              <JTabbedPaneConstraints tabName="Dados do Usu&#xe1;rio">
+                <Property name="tabTitle" type="java.lang.String" value="Dados do Usu&#xe1;rio"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
