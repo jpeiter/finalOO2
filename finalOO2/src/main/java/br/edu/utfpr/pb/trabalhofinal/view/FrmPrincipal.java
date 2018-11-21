@@ -63,13 +63,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuFonecedor = new javax.swing.JMenu();
         menuCidade = new javax.swing.JMenuItem();
         menuEstado = new javax.swing.JMenuItem();
         menuCliente = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenuItem();
         menuCategoria = new javax.swing.JMenuItem();
         menuProduto = new javax.swing.JMenuItem();
+        menuFornecedor = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuProdtCateg = new javax.swing.JMenuItem();
         menuVendas = new javax.swing.JMenuItem();
@@ -87,7 +88,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cadastros");
+        menuFonecedor.setText("Cadastros");
 
         menuCidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuCidade.setText("Cidade");
@@ -96,7 +97,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuCidadeActionPerformed(evt);
             }
         });
-        jMenu1.add(menuCidade);
+        menuFonecedor.add(menuCidade);
 
         menuEstado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuEstado.setText("Estado");
@@ -105,7 +106,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuEstadoActionPerformed(evt);
             }
         });
-        jMenu1.add(menuEstado);
+        menuFonecedor.add(menuEstado);
 
         menuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
         menuCliente.setText("Cliente");
@@ -114,7 +115,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(menuCliente);
+        menuFonecedor.add(menuCliente);
 
         menuUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuUsuario.setText("Usuário");
@@ -123,7 +124,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(menuUsuario);
+        menuFonecedor.add(menuUsuario);
 
         menuCategoria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
         menuCategoria.setText("Categoria");
@@ -132,7 +133,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuCategoriaActionPerformed(evt);
             }
         });
-        jMenu1.add(menuCategoria);
+        menuFonecedor.add(menuCategoria);
 
         menuProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuProduto.setText("Produto");
@@ -141,9 +142,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuProdutoActionPerformed(evt);
             }
         });
-        jMenu1.add(menuProduto);
+        menuFonecedor.add(menuProduto);
 
-        jMenuBar1.add(jMenu1);
+        menuFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuFornecedor.setText("Fornecedor");
+        menuFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFornecedorActionPerformed(evt);
+            }
+        });
+        menuFonecedor.add(menuFornecedor);
+
+        jMenuBar1.add(menuFonecedor);
 
         menuRelatorios.setText("Relatórios");
 
@@ -350,6 +360,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuProdutoActionPerformed
 
+    private void menuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFornecedorActionPerformed
+        try {
+            FrmFornecedorLista frm = new FrmFornecedorLista();
+            Dimension size = jDesktopPane1.getSize();
+            Dimension fSize = frm.getSize();
+            frm.setLocation(
+                    (size.width - fSize.width) / 2,
+                    (size.height - fSize.height) / 2
+            );
+            jDesktopPane1.add(frm);
+            frm.setVisible(true);
+            frm.moveToFront();
+            frm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_menuFornecedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -390,12 +418,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuCategoria;
     private javax.swing.JMenuItem menuCidade;
     private javax.swing.JMenuItem menuCliente;
     private javax.swing.JMenuItem menuEstado;
+    private javax.swing.JMenu menuFonecedor;
+    private javax.swing.JMenuItem menuFornecedor;
     private javax.swing.JMenuItem menuProdtCateg;
     private javax.swing.JMenuItem menuProduto;
     private javax.swing.JMenu menuRelatorios;

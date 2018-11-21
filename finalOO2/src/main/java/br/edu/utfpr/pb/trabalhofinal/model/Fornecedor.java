@@ -28,19 +28,19 @@ public class Fornecedor implements AbstractModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", length = 50, nullable = false)
+    @Column(name = "nome", length = 100, nullable = false)
     @NotEmpty(message = "O campo 'Nome' deve ser preenchido.")
     private String nome;
 
-    @Column(name = "cnpj", length = 14, nullable = false)
-    @NotEmpty(message = "O campo 'CPF' deve ser preenchido.")
+    @Column(name = "cnpj", length = 18, nullable = false)
+    @NotEmpty(message = "O campo 'CNPJ' deve ser preenchido.")
     private String cnpj;
 
     @ManyToOne()
     @JoinColumn(name = "cidade_id", referencedColumnName = "id")
     private Cidade cidade;
 
-    @Column(name = "telefone", length = 11, nullable = true)
+    @Column(name = "telefone", length = 14, nullable = true)
     private String telefone;
 
     @Column(name = "endereco", length = 100, nullable = true)

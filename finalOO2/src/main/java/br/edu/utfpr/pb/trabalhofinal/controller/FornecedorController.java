@@ -18,10 +18,10 @@ public class FornecedorController extends GenericController<Fornecedor, Long> {
         return this.fornecedorDao;
     }
 
-    public Fornecedor findFornecedorByCNPJ(String cnpj) {
+    public List<Fornecedor> findFornecedorByCNPJ(String cnpj) {
         return this.fornecedorDao.findFornecedorByCNPJ(cnpj);
     }
-    
+
     public List<Fornecedor> findFornecedorByNome(String nome) {
         return this.fornecedorDao.findFornecedorByNome(nome);
     }

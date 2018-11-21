@@ -13,16 +13,17 @@ public class FornecedorDao extends GenericDao<Fornecedor, Long> {
     public List<Fornecedor> findFornecedorByNome(String nome) {
         Query query = em.createQuery("SELECT f "
                 + "FROM Fornecedor f "
-                + "WHERE f.nome LIKE :nome ORDER BY f.nome");
-        query.setParameter("nome", nome);
+                + "WHERE f.nome LIKE :nome "
+                + "ORDER BY f.nome");
+        query.setParameter("nome", "%" + nome + "%");
         return query.getResultList();
     }
 
-    public Fornecedor findFornecedorByCNPJ(String cnpj) {
+    public List<Fornecedor> findFornecedorByCNPJ(String cnpj) {
         Query query = em.createQuery("SELECT f "
                 + "FROM Fornecedor f "
-                + "WHERE f.cnpj LIKE :cnpj");
+                + "WHERE f.cnpj = :cnpj");
         query.setParameter("cnpj", cnpj);
-        return (Fornecedor) query.getSingleResult();
+        return query.getResultList();
     }
 }

@@ -83,3 +83,6 @@ INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (4, 225
 
 INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-05-15', '3214', 3);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 3);
+
+INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('COPEL', '76483817000120', 8, '4632234365', 'Rodovia PR-280, s/n - Km 139');
+INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('SANEPAR', '76484013000145', 8, '4632724000', 'Tv. Clárice Soares Cerqueira, 185 - Centro, Pato Branco - PR');
