@@ -2,7 +2,6 @@ package br.edu.utfpr.pb.trabalhofinal.view;
 
 import br.edu.utfpr.pb.trabalhofinal.controller.UsuarioController;
 import br.edu.utfpr.pb.trabalhofinal.enums.EPermissao;
-import br.edu.utfpr.pb.trabalhofinal.model.Contato;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -475,7 +474,6 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
         usuario.setSalario(Double.parseDouble(txtSalario.getText()));
         usuario.setComissao(Double.parseDouble(txtComissao.getText()));
         usuario.setPermissoes((EPermissao) cmbPermissao.getSelectedItem());
-        usuario.setFoto(lblFoto.getText().getBytes());
 
         usuarioController.salvar(usuario);
     }

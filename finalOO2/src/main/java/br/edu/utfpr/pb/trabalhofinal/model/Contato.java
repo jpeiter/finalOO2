@@ -72,6 +72,14 @@ public class Contato implements AbstractModel {
         this.usuario = usuario;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;

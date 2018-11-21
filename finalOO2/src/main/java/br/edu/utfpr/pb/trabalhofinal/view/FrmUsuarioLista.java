@@ -230,12 +230,12 @@ public class FrmUsuarioLista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        buscaUser();
+        buscaUsuario();
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            buscaUser();
+            buscaUsuario();
         }
     }//GEN-LAST:event_txtPesquisarKeyPressed
 
@@ -263,7 +263,7 @@ public class FrmUsuarioLista extends javax.swing.JInternalFrame {
         usuarioTableModel.fireTableDataChanged();
     }
 
-    private void buscaUser() {
+    private void buscaUsuario() {
         if (txtPesquisar.getText().isEmpty()) {
             usuarioTableModel = new UsuarioTableModel(
                     usuarioController.listar());

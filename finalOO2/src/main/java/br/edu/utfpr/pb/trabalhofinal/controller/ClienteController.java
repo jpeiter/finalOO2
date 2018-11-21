@@ -22,7 +22,7 @@ public class ClienteController extends GenericController<Cliente, Long> {
         return this.clienteDao.findClienteByNome(nome);
     }
 
-    public Cliente findClienteByCPF(String cpf) {
+    public List<Cliente> findClienteByCPF(String cpf) {
         return this.clienteDao.findClienteByCPF(cpf);
     }
 

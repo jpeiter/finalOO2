@@ -41,9 +41,18 @@ public class Cliente implements AbstractModel {
     private Cidade cidade;
 
     @OneToMany(mappedBy = "cliente",
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch = FetchType.LAZY)
+            orphanRemoval = true,
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.EAGER)
     private List<Contato> contatos;
+
+    @Column(name = "endereco", nullable = false)
+    @NotEmpty(message = "O campo 'endereco' deve ser preenchido.")
+    private String endereco;
+
+    @Column(name = "cep", nullable = false)
+    @NotEmpty(message = "O campo 'CEP' deve ser preenchido.")
+    private String cep;
 
     public Cliente() {
     }
@@ -86,6 +95,22 @@ public class Cliente implements AbstractModel {
 
     public void setContatos(List<Contato> contatos) {
         this.contatos = contatos;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     @Override

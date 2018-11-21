@@ -46,7 +46,7 @@ public class Usuario implements AbstractModel, Serializable {
     @DecimalMin(value = "0.01", message = "O salário deve ser maior que R$ 0.00.")
     private Double salario;
 
-    @DecimalMin(value = "0.01", message = "O salário deve ser maior que R$ 0.00.")
+    @DecimalMin(value = "0.01")
     private Double comissao;
 
     @Lob

@@ -54,13 +54,14 @@ INSERT INTO CIDADE (nome, estado_id) values ('Sao Paulo', 25);
 INSERT INTO CIDADE (nome, estado_id) values ('Teresina', 18);
 INSERT INTO CIDADE (nome, estado_id) values ('Vitoria', 8);
 
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('a', '11111111111', 1500, 2, null, 'a', 'a');
 INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('Administrador', '00100200345', 10, 2, null, 'admin@admin.com', '123');
 INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('Teste', '00600700890', 10, 2, null, 'teste@teste.com', '123');
 INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('Jean Peiter', '10185092918', 10, 2, null, 'jpeiter15@gmail.com', 'batata');
 
-INSERT INTO cliente (cpf, nome, cidade_id) VALUES ('71014760070','Barack Hussein Obama II', 6);
-INSERT INTO cliente (cpf, nome, cidade_id) VALUES ( '52545712094' ,'Abraham Lincoln', 12);
-INSERT INTO cliente (cpf, nome, cidade_id) VALUES ( '31502054094','Neymar da Silva Santos Junior',24);
+INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ('71014760070','Barack Hussein Obama II', 'Rua dos Bobos nº 0, Bairro Top', '85501020', 6);
+INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ( '52545712094' ,'Abraham Lincoln', 'Avenida Tupy 476, Centro', '85504400', 12);
+INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ( '31502054094','Neymar da Silva Santos Junior', 'Alameda Barça', '85301111', 24);
 
 INSERT INTO categoria (descricao) VALUES ('Informatica');
 INSERT INTO categoria (descricao) VALUES ('Eletronico');

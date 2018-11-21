@@ -1,26 +1,21 @@
 package br.edu.utfpr.pb.trabalhofinal.view;
 
-import br.edu.utfpr.pb.trabalhofinal.controller.ClienteController;
-import br.edu.utfpr.pb.trabalhofinal.tableModel.ClienteTableModel;
+import br.edu.utfpr.pb.trabalhofinal.controller.CategoriaController;
+import br.edu.utfpr.pb.trabalhofinal.tableModel.CategoriaTableModel;
 import java.awt.event.KeyEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jpeit
- */
-public class FrmClienteLista extends javax.swing.JInternalFrame {
+public class FrmCategoriaLista extends javax.swing.JInternalFrame {
 
-    private ClienteTableModel clienteTableModel;
-    private ClienteController clienteController;
+    private CategoriaTableModel categoriaTableModel;
+    private CategoriaController categoriaController;
+    private DefaultComboBoxModel cmbModel;
 
-    public FrmClienteLista() {
+    public FrmCategoriaLista() {
         initComponents();
-        buttonGroup1.add(rdbNome);
-        buttonGroup1.add(rdbCpf);
-        rdbNome.setSelected(true);
 
-        this.clienteController = new ClienteController();
+        this.categoriaController = new CategoriaController();
         carregarDados();
     }
 
@@ -33,22 +28,19 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDados = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnInserir = new javax.swing.JButton();
-        btnRemover = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        txtPesquisa = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        rdbNome = new javax.swing.JRadioButton();
-        rdbCpf = new javax.swing.JRadioButton();
-        txtPesquisar = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Lista de Clientes");
+        setTitle("Categorias");
 
         tblDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,9 +60,6 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/remover.png"))); // NOI18N
-        btnRemover.setText("Remover");
-
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,41 +68,46 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
             }
         });
 
+        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/remover.png"))); // NOI18N
+        btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(btnInserir)
+                .addGap(37, 37, 37)
+                .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(btnRemover)
-                .addGap(47, 47, 47))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnInserir)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Buscar por:");
-
-        rdbNome.setText("Nome");
-
-        rdbCpf.setText("CPF");
-
-        txtPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPesquisarKeyPressed(evt);
+                txtPesquisaKeyPressed(evt);
             }
         });
+
+        jLabel1.setText("Busca por descrição:");
 
         btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/buscar.png"))); // NOI18N
         btnPesquisa.setText("Pesquisar");
@@ -127,39 +121,33 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdbCpf)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPesquisar)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(rdbNome)
-                    .addComponent(rdbCpf))
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -168,8 +156,8 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        FrmClienteForm frm
-                = new FrmClienteForm(null, true);
+        FrmCategoriaForm frm
+                = new FrmCategoriaForm(null, true);
         frm.setLocationRelativeTo(null);
         frm.setVisible(true);
 
@@ -179,14 +167,14 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         try {
             if (tblDados.getSelectedRow() >= 0) {
-                Long idCliente = Long.parseLong(
-                        clienteTableModel.getValueAt(
+                Long id = Long.parseLong(
+                        categoriaTableModel.getValueAt(
                                 tblDados.getSelectedRow(), 0).toString()
                 );
-                FrmClienteForm frm
-                        = new FrmClienteForm(null, true);
-                frm.carregarCliente(idCliente);
+                FrmCategoriaForm frm
+                        = new FrmCategoriaForm(null, true);
                 frm.setLocationRelativeTo(null);
+                frm.carregarDados(id);
                 frm.setVisible(true);
 
                 carregarDados();
@@ -205,15 +193,47 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        try {
+            if (tblDados.getSelectedRow() >= 0) {
+                if (JOptionPane.showConfirmDialog(rootPane,
+                        "Deseja remover o registro?!",
+                        "Atenção",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION) {
+                    Long id = Long.parseLong(
+                            categoriaTableModel.getValueAt(
+                                    tblDados.getSelectedRow(), 0).toString()
+                    );
+                    categoriaController.remover(id);
+                    categoriaTableModel.removeRow(
+                            tblDados.getSelectedRow());
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Selecione um registro!",
+                        "Atenção",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                    "Ocorreu um erro!",
+                    "Atenção",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
-        buscaCliente();
+        buscarCidade();
     }//GEN-LAST:event_btnPesquisaActionPerformed
 
-    private void txtPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarKeyPressed
+    private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            buscaCliente();
+            buscarCidade();
         }
-    }//GEN-LAST:event_txtPesquisarKeyPressed
+    }//GEN-LAST:event_txtPesquisaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -221,40 +241,26 @@ public class FrmClienteLista extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnRemover;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rdbCpf;
-    private javax.swing.JRadioButton rdbNome;
     private javax.swing.JTable tblDados;
-    private javax.swing.JTextField txtPesquisar;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 
     private void carregarDados() {
-        clienteTableModel = new ClienteTableModel(
-                clienteController.listar()
+        categoriaTableModel = new CategoriaTableModel(
+                categoriaController.listar()
         );
-        tblDados.setModel(clienteTableModel);
-        clienteTableModel.fireTableDataChanged();
+        tblDados.setModel(categoriaTableModel);
+        categoriaTableModel.fireTableDataChanged();
     }
 
-    private void buscaCliente() {
-        if (txtPesquisar.getText().isEmpty()) {
-            clienteTableModel = new ClienteTableModel(
-                    clienteController.listar()
-            );
-        } else {
-            if (rdbNome.isSelected()) {
-                clienteTableModel = new ClienteTableModel(
-                        clienteController.findClienteByNome(txtPesquisar.getText())
-                );
-            } else {
-                clienteTableModel = new ClienteTableModel(
-                        clienteController.findClienteByCPF(txtPesquisar.getText()));
-            }
-        }
-        tblDados.setModel(clienteTableModel);
-        clienteTableModel.fireTableDataChanged();
+    private void buscarCidade() {
+        categoriaTableModel = new CategoriaTableModel(
+                categoriaController.findCategoriasByDescricao(txtPesquisa.getText())
+        );
+        tblDados.setModel(categoriaTableModel);
+        categoriaTableModel.fireTableDataChanged();
     }
 }

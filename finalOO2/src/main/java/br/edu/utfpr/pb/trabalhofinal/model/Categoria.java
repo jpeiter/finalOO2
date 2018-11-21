@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -20,8 +19,7 @@ public class Categoria implements AbstractModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @NotEmpty(message = "O campo 'descrição' deve ser preenchido.")
+    
     @Column(name = "descricao", length = 50, nullable = false)
     private String descricao;
 

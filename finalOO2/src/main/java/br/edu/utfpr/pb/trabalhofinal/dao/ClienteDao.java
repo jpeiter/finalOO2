@@ -15,16 +15,16 @@ public class ClienteDao extends GenericDao<Cliente, Long> {
                 + "FROM Cliente c "
                 + "WHERE c.nome LIKE :nome "
                 + "ORDER BY c.nome");
-        query.setParameter("nome", nome);
+        query.setParameter("nome", "%" + nome + "%");
         return query.getResultList();
     }
 
-    public Cliente findClienteByCPF(String cpf) {
+    public List<Cliente> findClienteByCPF(String cpf) {
         Query query = em.createQuery("SELECT c "
                 + "FROM Cliente c "
-                + "WHERE c.cpf LIKE :cpf");
+                + "WHERE c.cpf = :cpf");
         query.setParameter("cpf", cpf);
-        return (Cliente) query.getSingleResult();
+        return query.getResultList();
     }
 
 }
