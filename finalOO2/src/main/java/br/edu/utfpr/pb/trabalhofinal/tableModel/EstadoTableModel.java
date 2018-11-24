@@ -70,4 +70,9 @@ public class EstadoTableModel extends AbstractTableModel {
         this.colunas = colunas;
     }
 
+    public void removeRow(int rowIndex) {
+        this.lista.remove(rowIndex);
+        this.fireTableRowsDeleted(rowIndex, rowIndex);
+    }
+
 }

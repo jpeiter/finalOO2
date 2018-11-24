@@ -486,7 +486,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
                 || (cmbPermissao.getSelectedIndex() == -1)) {
             throw new Exception("Preencha todos os campos obrigatórios!");
         } else if (!txtConfSenha.getText().isEmpty()) {
-            if (txtConfSenha.getText().equals(usuario.getSenha())) {
+            if (txtSenha.getText().equals(usuario.getSenha())) {
                 if (!txtSenha.getText().equals(txtConfSenha.getText())) {
                     throw new Exception("As senhas são diferentes!");
                 }

@@ -1,21 +1,21 @@
 package br.edu.utfpr.pb.trabalhofinal.view;
 
 import br.edu.utfpr.pb.trabalhofinal.controller.CidadeController;
-import br.edu.utfpr.pb.trabalhofinal.controller.EstadoController;
-import br.edu.utfpr.pb.trabalhofinal.dao.CidadeDao;
 import br.edu.utfpr.pb.trabalhofinal.tableModel.CidadeTableModel;
-import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class FrmCidadeLista extends javax.swing.JInternalFrame {
-
+    
     private CidadeTableModel cidadeTableModel;
     private CidadeController cidadeController;
-    private DefaultComboBoxModel cmbModel;
-
+    
     public FrmCidadeLista() {
         initComponents();
-
+        buttonGroup1.add(rdbNome);
+        buttonGroup1.add(rdbEstado);
+        rdbNome.setSelected(true);
+        
         this.cidadeController = new CidadeController();
         carregarDados();
     }
@@ -29,12 +29,18 @@ public class FrmCidadeLista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDados = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnInserir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        rdbNome = new javax.swing.JRadioButton();
+        rdbEstado = new javax.swing.JRadioButton();
+        txtPesquisa = new javax.swing.JTextField();
+        btnFiltrar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -79,42 +85,85 @@ public class FrmCidadeLista extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addContainerGap()
                 .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(btnRemover)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel1.setText("Filtrar por:");
+
+        rdbNome.setText("Nome");
+
+        rdbEstado.setText("Estado");
+
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyPressed(evt);
+            }
+        });
+
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtPesquisa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFiltrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rdbNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rdbEstado)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(rdbNome)
+                    .addComponent(rdbEstado))
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -127,7 +176,7 @@ public class FrmCidadeLista extends javax.swing.JInternalFrame {
                 = new FrmCidadeForm(null, true);
         frm.setLocationRelativeTo(null);
         frm.setVisible(true);
-
+        
         carregarDados();
     }//GEN-LAST:event_btnInserirActionPerformed
 
@@ -143,7 +192,7 @@ public class FrmCidadeLista extends javax.swing.JInternalFrame {
                 frm.setLocationRelativeTo(null);
                 frm.carregarDados(id);
                 frm.setVisible(true);
-
+                
                 carregarDados();
             } else {
                 JOptionPane.showMessageDialog(this,
@@ -176,7 +225,7 @@ public class FrmCidadeLista extends javax.swing.JInternalFrame {
                     cidadeTableModel.removeRow(
                             tblDados.getSelectedRow());
                 }
-
+                
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Selecione um registro!",
@@ -192,20 +241,55 @@ public class FrmCidadeLista extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        buscaCidade();
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
+    private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            buscaCidade();
+        }
+    }//GEN-LAST:event_txtPesquisaKeyPressed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnRemover;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rdbEstado;
+    private javax.swing.JRadioButton rdbNome;
     private javax.swing.JTable tblDados;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 
     private void carregarDados() {
         cidadeTableModel = new CidadeTableModel(
                 cidadeController.listar()
         );
+        tblDados.setModel(cidadeTableModel);
+        cidadeTableModel.fireTableDataChanged();
+    }
+    
+    private void buscaCidade() {
+        if (txtPesquisa.getText().isEmpty()) {
+            cidadeTableModel = new CidadeTableModel(
+                    cidadeController.listar()
+            );
+        } else {
+            if (rdbNome.isSelected()) {
+                cidadeTableModel = new CidadeTableModel(
+                        cidadeController.findCidadesByNome(txtPesquisa.getText().trim())
+                );
+            } else if (rdbEstado.isSelected()) {
+                cidadeTableModel = new CidadeTableModel(
+                        cidadeController.findCidadesByEstado(txtPesquisa.getText().trim())
+                );
+            }
+        }
         tblDados.setModel(cidadeTableModel);
         cidadeTableModel.fireTableDataChanged();
     }

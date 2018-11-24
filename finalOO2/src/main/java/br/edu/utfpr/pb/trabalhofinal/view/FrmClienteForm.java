@@ -44,6 +44,7 @@ public class FrmClienteForm extends javax.swing.JDialog {
         cmbCidade.setModel(cmbModelCidade);
 
         cliente = new Cliente();
+        cliente.setContatos(new ArrayList<>());
         clienteController = new ClienteController();
 
     }
@@ -389,7 +390,7 @@ public class FrmClienteForm extends javax.swing.JDialog {
     private void btnSalvarContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarContatoActionPerformed
         if (contatoEdit == null) {
             adicionarContato();
-            
+
         } else {
             atualizarContato();
             contatoEdit = null;
@@ -403,12 +404,8 @@ public class FrmClienteForm extends javax.swing.JDialog {
     private void btnRemoverContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverContatoActionPerformed
         try {
             if (tblContato.getSelectedRow() >= 0) {
-                if (JOptionPane.showConfirmDialog(rootPane,
-                        "Deseja remover o contato?",
-                        "Atenção",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.ERROR_MESSAGE
-                ) == JOptionPane.YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(rootPane, "Deseja remover o contato?", "Atenção",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION) {
                     cliente.getContatos().remove(
                             tblContato.getSelectedRow());
                     contatoTableModel.removeRow(

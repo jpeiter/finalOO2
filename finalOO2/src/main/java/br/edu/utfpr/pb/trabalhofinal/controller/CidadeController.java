@@ -23,4 +23,11 @@ public class CidadeController extends GenericController<Cidade, Long> {
         return this.cidadeDao.findCidadesByEstado(estado);
     }
 
+    public List<Cidade> findCidadesByEstado(String estado) {
+        return this.cidadeDao.findCidadesByEstado(estado);
+    }
+
+    public List<Cidade> findCidadesByNome(String nome) {
+        return this.cidadeDao.findCidadesByNome(nome);
+    }
 }
