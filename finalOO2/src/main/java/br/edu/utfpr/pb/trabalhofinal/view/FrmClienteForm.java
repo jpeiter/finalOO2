@@ -19,9 +19,9 @@ import javax.swing.JOptionPane;
 public class FrmClienteForm extends javax.swing.JDialog {
 
     private Cliente cliente;
-    private ClienteController clienteController;
-    private CidadeController cidadeController;
-    private EstadoController estadoController;
+    private final ClienteController clienteController;
+    private final CidadeController cidadeController;
+    private final EstadoController estadoController;
     private DefaultComboBoxModel cmbModelEstado;
     private DefaultComboBoxModel cmbModelCidade;
     private ContatoTableModel contatoTableModel;

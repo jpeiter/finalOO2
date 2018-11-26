@@ -98,6 +98,11 @@ public class Fornecedor implements AbstractModel {
     }
 
     @Override
+    public String toString() {
+        return this.getNome();
+    }
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 53 * hash + Objects.hashCode(this.id);

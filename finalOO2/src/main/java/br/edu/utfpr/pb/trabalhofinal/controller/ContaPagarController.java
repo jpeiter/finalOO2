@@ -19,10 +19,6 @@ public class ContaPagarController extends GenericController<ContaPagar, Long> {
         return this.contaPagarDao;
     }
 
-    public List<ContaPagar> findContasPagarByVencimento(LocalDate dataInicial, LocalDate dataFinal) {
-        return this.contaPagarDao.findContasPagarByVencimento(dataInicial, dataFinal);
-    }
-
     public List<ContaPagar> findContasPagarByVencimento(LocalDate dataInicial, LocalDate dataFinal, Boolean isPaga) {
         return this.contaPagarDao.findContasPagarByVencimento(dataInicial, dataFinal, isPaga);
     }

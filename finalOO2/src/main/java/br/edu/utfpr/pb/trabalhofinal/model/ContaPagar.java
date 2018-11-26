@@ -40,10 +40,11 @@ public class ContaPagar implements AbstractModel {
     @Column(name = "valor", nullable = false)
     private Double valor;
 
-    @Column(name = "valorPago", nullable = false)
+    @Column(name = "valorPago", nullable = true)
     private Double valorPago;
 
     @Convert(converter = TipoPagamentoConverter.class)
+    @Column(name = "tipoPagamento", nullable = false)
     private ETipoPagamento tipoPagamento;
 
     @ManyToOne

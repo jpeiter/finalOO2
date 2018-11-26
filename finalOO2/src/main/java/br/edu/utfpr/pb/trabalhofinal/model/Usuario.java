@@ -3,7 +3,6 @@ package br.edu.utfpr.pb.trabalhofinal.model;
 import br.edu.utfpr.pb.trabalhofinal.enums.EPermissao;
 import br.edu.utfpr.pb.trabalhofinal.util.PermissaoConverter;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -60,6 +59,7 @@ public class Usuario implements AbstractModel, Serializable {
     private String senha;
 
     @Convert(converter = PermissaoConverter.class)
+    @Column(name = "permissoes", nullable = false)
     private EPermissao permissoes;
 
     public Long getId() {

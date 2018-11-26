@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -71,6 +73,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuCategoria = new javax.swing.JMenuItem();
         menuProduto = new javax.swing.JMenuItem();
         menuFornecedor = new javax.swing.JMenuItem();
+        menuContasPagar = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuProdtCateg = new javax.swing.JMenuItem();
         menuVendas = new javax.swing.JMenuItem();
@@ -152,6 +155,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
         menuFonecedor.add(menuFornecedor);
+
+        menuContasPagar.setText("Contas a Pagar");
+        menuContasPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuContasPagarActionPerformed(evt);
+            }
+        });
+        menuFonecedor.add(menuContasPagar);
 
         jMenuBar1.add(menuFonecedor);
 
@@ -378,6 +389,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuFornecedorActionPerformed
 
+    private void menuContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuContasPagarActionPerformed
+        try {
+            FrmContaPagarLista frm = new FrmContaPagarLista(usuarioLogado);
+            Dimension size = jDesktopPane1.getSize();
+            Dimension fSize = frm.getSize();
+            frm.setLocation(
+                    (size.width - fSize.width) / 2,
+                    (size.height - fSize.height) / 2
+            );
+            jDesktopPane1.add(frm);
+            frm.setVisible(true);
+            frm.moveToFront();
+            frm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuContasPagarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +451,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCategoria;
     private javax.swing.JMenuItem menuCidade;
     private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenuItem menuContasPagar;
     private javax.swing.JMenuItem menuEstado;
     private javax.swing.JMenu menuFonecedor;
     private javax.swing.JMenuItem menuFornecedor;

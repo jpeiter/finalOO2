@@ -54,10 +54,10 @@ INSERT INTO CIDADE (nome, estado_id) values ('Sao Paulo', 25);
 INSERT INTO CIDADE (nome, estado_id) values ('Teresina', 18);
 INSERT INTO CIDADE (nome, estado_id) values ('Vitoria', 8);
 
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('a', '11111111111', 1500, 2, null, 'a', 'a');
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('Administrador', '00100200345', 10, 2, null, 'admin@admin.com', '123');
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('Teste', '00600700890', 10, 2, null, 'teste@teste.com', '123');
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha) VALUES ('Jean Peiter', '10185092918', 10, 2, null, 'jpeiter15@gmail.com', 'batata');
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('a', '11111111111', 1500, 2, null, 'a', 'a', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Administrador', '00100200345', 10, 2, null, 'admin@admin.com', '123', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Teste', '00600700890', 10, 2, null, 'teste@teste.com', '123', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Jean Peiter', '10185092918', 10, 2, null, 'jpeiter15@gmail.com', 'batata', 0);
 
 INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ('71014760070','Barack Hussein Obama II', 'Rua dos Bobos nº 0, Bairro Top', '85501020', 6);
 INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ( '52545712094' ,'Abraham Lincoln', 'Avenida Tupy 476, Centro', '85504400', 12);
@@ -86,3 +86,6 @@ INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930
 
 INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('COPEL', '76483817000120', 8, '4632234365', 'Rodovia PR-280, s/n - Km 139');
 INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('SANEPAR', '76484013000145', 8, '4632724000', 'Tv. Clárice Soares Cerqueira, 185 - Centro, Pato Branco - PR');
+
+INSERT INTO contaPagar ( dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2018-11-24', null, 600, 0, 3, 1, 1);
+INSERT INTO contaPagar ( dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2017-01-01', '2018-01-01', 450, 450, 3, 1, 2);
