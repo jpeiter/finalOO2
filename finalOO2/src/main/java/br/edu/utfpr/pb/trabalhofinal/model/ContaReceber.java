@@ -37,7 +37,7 @@ public class ContaReceber implements AbstractModel {
     private LocalDate data;
 
     @Column(name = "numeroRecibo", length = 14, nullable = false)
-    private Integer numeroRecibo;
+    private String numeroRecibo;
 
     @Convert(converter = TipoPagamentoConverter.class)
     private ETipoPagamento tipoRecebimento;
@@ -77,11 +77,11 @@ public class ContaReceber implements AbstractModel {
         this.data = data;
     }
 
-    public Integer getNumeroRecibo() {
+    public String getNumeroRecibo() {
         return numeroRecibo;
     }
 
-    public void setNumeroRecibo(Integer numeroRecibo) {
+    public void setNumeroRecibo(String numeroRecibo) {
         this.numeroRecibo = numeroRecibo;
     }
 

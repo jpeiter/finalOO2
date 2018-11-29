@@ -21,7 +21,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class FrmPrincipal extends javax.swing.JFrame {
 
     private Timer timer;
-    private String titulo = "Snow's Store";
+    private String titulo = "Snow's Store ";
     private Usuario usuarioLogado;
 
     public FrmPrincipal() {
@@ -65,18 +65,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        menuContasPagar = new javax.swing.JMenuItem();
+        menuContaReceber = new javax.swing.JMenuItem();
         menuFonecedor = new javax.swing.JMenu();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        menuCategoria = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
         menuCidade = new javax.swing.JMenuItem();
         menuEstado = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         menuCliente = new javax.swing.JMenuItem();
-        menuUsuario = new javax.swing.JMenuItem();
-        menuCategoria = new javax.swing.JMenuItem();
-        menuProduto = new javax.swing.JMenuItem();
         menuFornecedor = new javax.swing.JMenuItem();
-        menuContasPagar = new javax.swing.JMenuItem();
+        menuUsuario = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        menuProduto = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuVendas = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuProdtCateg = new javax.swing.JMenuItem();
-        menuVendas = new javax.swing.JMenuItem();
+        menuRelVendas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,7 +101,45 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        menuFonecedor.setText("Cadastros");
+        jMenu2.setText("Financeiro");
+
+        menuContasPagar.setText("Contas a Pagar");
+        menuContasPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuContasPagarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuContasPagar);
+
+        menuContaReceber.setText("Contas a Receber");
+        menuContaReceber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuContaReceberActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuContaReceber);
+
+        jMenuBar1.add(jMenu2);
+
+        menuFonecedor.setText("Gerencial");
+        menuFonecedor.add(jSeparator1);
+
+        jMenu3.setText("Cadastros");
+
+        jMenu7.setText("Categorias");
+
+        menuCategoria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
+        menuCategoria.setText("Categorias");
+        menuCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(menuCategoria);
+
+        jMenu3.add(jMenu7);
+
+        jMenu5.setText("Locais");
 
         menuCidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuCidade.setText("Cidade");
@@ -100,7 +148,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuCidadeActionPerformed(evt);
             }
         });
-        menuFonecedor.add(menuCidade);
+        jMenu5.add(menuCidade);
 
         menuEstado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuEstado.setText("Estado");
@@ -109,43 +157,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuEstadoActionPerformed(evt);
             }
         });
-        menuFonecedor.add(menuEstado);
+        jMenu5.add(menuEstado);
+
+        jMenu3.add(jMenu5);
+
+        jMenu4.setText("Pessoas");
 
         menuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
-        menuCliente.setText("Cliente");
+        menuCliente.setText("Clientes");
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuClienteActionPerformed(evt);
             }
         });
-        menuFonecedor.add(menuCliente);
-
-        menuUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuUsuario.setText("Usuário");
-        menuUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuUsuarioActionPerformed(evt);
-            }
-        });
-        menuFonecedor.add(menuUsuario);
-
-        menuCategoria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
-        menuCategoria.setText("Categoria");
-        menuCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCategoriaActionPerformed(evt);
-            }
-        });
-        menuFonecedor.add(menuCategoria);
-
-        menuProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuProduto.setText("Produto");
-        menuProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuProdutoActionPerformed(evt);
-            }
-        });
-        menuFonecedor.add(menuProduto);
+        jMenu4.add(menuCliente);
 
         menuFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuFornecedor.setText("Fornecedor");
@@ -154,17 +179,47 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuFornecedorActionPerformed(evt);
             }
         });
-        menuFonecedor.add(menuFornecedor);
+        jMenu4.add(menuFornecedor);
 
-        menuContasPagar.setText("Contas a Pagar");
-        menuContasPagar.addActionListener(new java.awt.event.ActionListener() {
+        menuUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuUsuario.setText("Usuários");
+        menuUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuContasPagarActionPerformed(evt);
+                menuUsuarioActionPerformed(evt);
             }
         });
-        menuFonecedor.add(menuContasPagar);
+        jMenu4.add(menuUsuario);
+
+        jMenu3.add(jMenu4);
+
+        jMenu6.setText("Produtos");
+
+        menuProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuProduto.setText("Produto");
+        menuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProdutoActionPerformed(evt);
+            }
+        });
+        jMenu6.add(menuProduto);
+
+        jMenu3.add(jMenu6);
+
+        menuFonecedor.add(jMenu3);
 
         jMenuBar1.add(menuFonecedor);
+
+        jMenu1.setText("Operacional");
+
+        menuVendas.setText("Vendas");
+        menuVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVendasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuVendas);
+
+        jMenuBar1.add(jMenu1);
 
         menuRelatorios.setText("Relatórios");
 
@@ -176,13 +231,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         menuRelatorios.add(menuProdtCateg);
 
-        menuVendas.setText("Vendas");
-        menuVendas.addActionListener(new java.awt.event.ActionListener() {
+        menuRelVendas.setText("Vendas");
+        menuRelVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuVendasActionPerformed(evt);
+                menuRelVendasActionPerformed(evt);
             }
         });
-        menuRelatorios.add(menuVendas);
+        menuRelatorios.add(menuRelVendas);
 
         jMenuBar1.add(menuRelatorios);
 
@@ -286,7 +341,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuProdtCategActionPerformed
 
-    private void menuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasActionPerformed
+    private void menuRelVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelVendasActionPerformed
         String clienteOuData = JOptionPane.showInputDialog(null, "Informe o nome do cliente ou a data desejada", JOptionPane.QUESTION_MESSAGE);
 
         for (char c : clienteOuData.toCharArray()) {
@@ -312,7 +367,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao exibir relatório!", "Atenção!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_menuVendasActionPerformed
+    }//GEN-LAST:event_menuRelVendasActionPerformed
 
     private void menuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioActionPerformed
         try {
@@ -407,6 +462,42 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuContasPagarActionPerformed
 
+    private void menuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasActionPerformed
+        try {
+            FrmVendaLista frm = new FrmVendaLista(usuarioLogado);
+            Dimension size = jDesktopPane1.getSize();
+            Dimension fSize = frm.getSize();
+            frm.setLocation(
+                    (size.width - fSize.width) / 2,
+                    (size.height - fSize.height) / 2
+            );
+            jDesktopPane1.add(frm);
+            frm.setVisible(true);
+            frm.moveToFront();
+            frm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuVendasActionPerformed
+
+    private void menuContaReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuContaReceberActionPerformed
+        try {
+            FrmContaReceberLista frm = new FrmContaReceberLista();
+            Dimension size = jDesktopPane1.getSize();
+            Dimension fSize = frm.getSize();
+            frm.setLocation(
+                    (size.width - fSize.width) / 2,
+                    (size.height - fSize.height) / 2
+            );
+            jDesktopPane1.add(frm);
+            frm.setVisible(true);
+            frm.moveToFront();
+            frm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuContaReceberActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -447,16 +538,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem menuCategoria;
     private javax.swing.JMenuItem menuCidade;
     private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenuItem menuContaReceber;
     private javax.swing.JMenuItem menuContasPagar;
     private javax.swing.JMenuItem menuEstado;
     private javax.swing.JMenu menuFonecedor;
     private javax.swing.JMenuItem menuFornecedor;
     private javax.swing.JMenuItem menuProdtCateg;
     private javax.swing.JMenuItem menuProduto;
+    private javax.swing.JMenuItem menuRelVendas;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenuItem menuUsuario;
     private javax.swing.JMenuItem menuVendas;

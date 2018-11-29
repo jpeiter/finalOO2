@@ -13,18 +13,21 @@ public class ContaPagarDao extends GenericDao<ContaPagar, Long> {
 
     public List<ContaPagar> findContasPagarByVencimento(LocalDate dataInicial, LocalDate dataFinal, Boolean isPaga) {
         String operator;
+        String st = "";
 
         if (isPaga) {
             operator = "=";
         } else {
             operator = "!=";
+            st = " OR cp.valorPago is null";
         }
         String select = "SELECT cp "
                 + "FROM ContaPagar cp "
                 + "WHERE cp.dataVencimento >= :dataInicial "
                 + "AND cp.dataVencimento <= :dataFinal "
                 + "AND cp.valor " + operator + " cp.valorPago "
-                + "ORDER BY cp.dataVencimento";
+                + "ORDER BY cp.dataVencimento"
+                + st;
         Query query = em.createQuery(select);
         query.setParameter("dataInicial", dataInicial);
         query.setParameter("dataFinal", dataFinal);

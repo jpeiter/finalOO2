@@ -1,11 +1,13 @@
 package br.edu.utfpr.pb.trabalhofinal.model;
 
+import br.edu.utfpr.pb.trabalhofinal.enums.ETipoPagamento;
+import br.edu.utfpr.pb.trabalhofinal.util.TipoPagamentoConverter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,9 +37,16 @@ public class Venda implements AbstractModel, Serializable {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "venda",
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY)
     private List<VendaProduto> vendaProdutos;
+
+    @Convert(converter = TipoPagamentoConverter.class)
+    @Column(name = "tipoPagamento", nullable = false)
+    private ETipoPagamento tipoPagamento;
+
+    @ManyToOne()
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
 
     public Venda() {
     }
@@ -85,6 +94,22 @@ public class Venda implements AbstractModel, Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public ETipoPagamento getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(ETipoPagamento tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

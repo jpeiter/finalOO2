@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 public class ContaReceberTableModel extends AbstractTableModel {
 
     private List<ContaReceber> lista;
-    private String[] columns = {"Código", "Número Pedido Venda", "Valor", "Data Venda"};
+    private String[] columns = {"Código", "Data Venda", "Recibo", "Valor", "Pagamento"};
 
     public ContaReceberTableModel() {
         lista = new ArrayList<>();
@@ -34,11 +34,13 @@ public class ContaReceberTableModel extends AbstractTableModel {
             case 0:
                 return lista.get(rowIndex).getId();
             case 1:
-                return lista.get(rowIndex).getVenda().getNumeroPedido();
-            case 2:
-                return lista.get(rowIndex).getValor();
-            case 3:
                 return lista.get(rowIndex).getVenda().getData();
+            case 2:
+                return lista.get(rowIndex).getNumeroRecibo();
+            case 3:
+                return lista.get(rowIndex).getValor();
+            case 4:
+                return lista.get(rowIndex).getTipoRecebimento();
             default:
                 return null;
         }

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author jpeit
  */
 public class FrmContaPagarForm extends javax.swing.JDialog {
-    
+
     private ContaPagar contaPagar;
     private ContaPagarController contaPagarController;
     private FornecedorController fornecedorController;
@@ -24,7 +24,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
     private DefaultComboBoxModel cmbFornecedorModel;
     private DefaultComboBoxModel cmbTipoPagamentoModel;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-    
+
     public FrmContaPagarForm(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         initComponents();
@@ -32,10 +32,10 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
         contaPagar = new ContaPagar();
         contaPagarController = new ContaPagarController();
         fornecedorController = new FornecedorController();
-        txtUsuario.setText(usuario.getNome());
         carregaCombos();
+        txtUsuario.setText(usuario.getNome());
     }
-    
+
     public FrmContaPagarForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -249,7 +249,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
         try {
             if (podeSalvar()) {
                 salvar();
-                
+
                 JOptionPane.showMessageDialog(rootPane,
                         "Registro salvo com sucesso!",
                         "Sucesso",
@@ -257,7 +257,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
                 this.dispose();
             }
         } catch (Exception e) {
-            
+
             e.printStackTrace();
             JOptionPane.showMessageDialog(rootPane,
                     e.getMessage(),
@@ -267,7 +267,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+
         if (JOptionPane.showConfirmDialog(null, "Deseja cancelar?", "Atenção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             this.dispose();
         }
@@ -345,16 +345,16 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
         fornecedorController.listar().forEach((x) -> cmbFornecedorModel.addElement(x));
         cmbFornecedor.setModel(cmbFornecedorModel);
         cmbFornecedor.setSelectedIndex(-1);
-        
+
         cmbTipoPagamentoModel = new DefaultComboBoxModel();
         for (ETipoPagamento tipo : ETipoPagamento.values()) {
             cmbTipoPagamentoModel.addElement(tipo);
         }
         cmbTipoPagamento.setModel(cmbTipoPagamentoModel);
         cmbTipoPagamento.setSelectedIndex(-1);
-        
+
     }
-    
+
     public void carregarContaPagar(Long idContaPagar) {
         contaPagar = contaPagarController.buscar(idContaPagar);
         txtId.setText(contaPagar.getId().toString());
@@ -366,7 +366,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
         txtValor.setText(contaPagar.getValor().toString().format("R$ "));
         txtValorPago.setText(contaPagar.getValorPago() == null ? "000" : contaPagar.getValorPago().toString());
     }
-    
+
     private boolean podeSalvar() throws Exception {
         if (cmbFornecedor.getSelectedIndex() == -1
                 || cmbTipoPagamento.getSelectedIndex() == -1
@@ -376,10 +376,10 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
         }
         return true;
     }
-    
+
     private void salvar() throws Exception {
         contaPagar.setFornecedor((Fornecedor) cmbFornecedor.getSelectedItem());
-        contaPagar.setUsuario(this.usuario);
+        contaPagar.setUsuario(contaPagar.getUsuario() == null ? this.usuario : contaPagar.getUsuario());
         contaPagar.setDataVencimento(LocalDate.parse(txtVencimento.getText(), formatter));
         contaPagar.setDataPagamento(
                 txtPagamento.getText().replace("/", "").trim().isEmpty()
@@ -388,7 +388,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
         contaPagar.setValor(Double.parseDouble(txtValor.getText().replace("R$", "").trim()));
         contaPagar.setValor(txtValor.getText().replace("R$", "").trim().isEmpty() ? null
                 : Double.parseDouble(txtValor.getText().replace("R$", "").trim()));
-        
+
         contaPagarController.salvar(contaPagar);
     }
 }

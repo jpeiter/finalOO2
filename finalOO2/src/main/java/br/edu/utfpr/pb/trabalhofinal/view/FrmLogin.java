@@ -7,6 +7,7 @@ package br.edu.utfpr.pb.trabalhofinal.view;
 
 import br.edu.utfpr.pb.trabalhofinal.controller.UsuarioController;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
+import br.edu.utfpr.pb.trabalhofinal.util.StringUtil;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -109,6 +110,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         login();
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
@@ -171,11 +173,14 @@ public class FrmLogin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void login() {
+
         try {
             Usuario usuarioAutenticado
                     = usuarioController.autenticarUsuario(
                             txtEmail.getText(),
-                            txtSenha.getText()
+//                            StringUtil.cripto(
+                                    txtSenha.getText()
+//                            )
                     );
 
             if (usuarioAutenticado != null) {

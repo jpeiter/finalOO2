@@ -18,7 +18,11 @@ public class ContaReceberController extends GenericController<ContaReceber, Long
         return this.contaReceberDao;
     }
 
-    public List<ContaReceber> findContasReceberByCliente(Long id) {
-        return this.contaReceberDao.findContasReceberByCliente(id);
+    public List<ContaReceber> findContasReceberByCliente(String nome) {
+        return this.contaReceberDao.findContasReceberByCliente(nome);
+    }
+
+    public List<ContaReceber> findContasReceberHoje() {
+        return this.contaReceberDao.findContasReceberHoje();
     }
 }

@@ -1,25 +1,26 @@
 package br.edu.utfpr.pb.trabalhofinal.view;
 
-import br.edu.utfpr.pb.trabalhofinal.controller.ContaPagarController;
+import br.edu.utfpr.pb.trabalhofinal.controller.VendaController;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
-import br.edu.utfpr.pb.trabalhofinal.tableModel.ContaPagarTableModel;
+import br.edu.utfpr.pb.trabalhofinal.tableModel.VendaTableModel;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author jpeit
  */
-public class FrmContaPagarLista extends javax.swing.JInternalFrame {
+public class FrmVendaLista extends javax.swing.JInternalFrame {
 
-    private ContaPagarTableModel contaPagarTableModel;
-    private ContaPagarController contaPagarController;
+    private VendaTableModel vendaTableModel;
+    private VendaController vendaController;
     private Usuario usuario;
     private DateTimeFormatter formatter;
 
-    public FrmContaPagarLista(Usuario usuario) {
+    public FrmVendaLista(Usuario usuario) {
         initComponents();
         formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -27,7 +28,7 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
         txtDataInicial.setText(LocalDate.now().withDayOfMonth(1).format(formatter));
         txtDataFinal.setText(LocalDate.now().format(formatter));
 
-        this.contaPagarController = new ContaPagarController();
+        this.vendaController = new VendaController();
         carregarDados();
     }
 
@@ -49,15 +50,18 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
         btnEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bntFiltrar = new javax.swing.JButton();
-        chkPagas = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        tabPane = new javax.swing.JTabbedPane();
+        pnlNPedido = new javax.swing.JPanel();
+        txtNPedido = new javax.swing.JTextField();
+        pnlDatas = new javax.swing.JPanel();
         txtDataInicial = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
         txtDataFinal = new javax.swing.JFormattedTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Contas a Pagar");
+        setTitle("Vendas");
 
         tblDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,7 +74,7 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblDados);
 
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/adicionar.png"))); // NOI18N
-        btnInserir.setText("Inserir");
+        btnInserir.setText("Nova Venda");
         btnInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserirActionPerformed(evt);
@@ -81,7 +85,7 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
         btnRemover.setText("Remover");
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/editar.png"))); // NOI18N
-        btnEditar.setText("Editar");
+        btnEditar.setText("VER DETALHES");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -112,7 +116,7 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Filtrar por vencimento:");
+        jLabel1.setText("Filtrar por:");
 
         bntFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/buscar.png"))); // NOI18N
         bntFiltrar.setText("Filtrar");
@@ -122,80 +126,105 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
             }
         });
 
-        chkPagas.setText("Pagas");
+        txtNPedido.setPreferredSize(new java.awt.Dimension(73, 20));
 
-        jLabel3.setText("Data inicial");
+        javax.swing.GroupLayout pnlNPedidoLayout = new javax.swing.GroupLayout(pnlNPedido);
+        pnlNPedido.setLayout(pnlNPedidoLayout);
+        pnlNPedidoLayout.setHorizontalGroup(
+            pnlNPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNPedidoLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(txtNPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
+        );
+        pnlNPedidoLayout.setVerticalGroup(
+            pnlNPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNPedidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtNPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addGap(11, 11, 11))
+        );
 
-        jLabel4.setText("Data final:");
+        tabPane.addTab("Nº Pedido", pnlNPedido);
 
         try {
             txtDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtDataInicial.setText("  /  /    ");
+
+        jLabel3.setText("Data inicial");
 
         try {
             txtDataFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtDataFinal.setText("  /  /    ");
+
+        jLabel4.setText("Data final:");
+
+        javax.swing.GroupLayout pnlDatasLayout = new javax.swing.GroupLayout(pnlDatas);
+        pnlDatas.setLayout(pnlDatasLayout);
+        pnlDatasLayout.setHorizontalGroup(
+            pnlDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatasLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(pnlDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(pnlDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlDatasLayout.setVerticalGroup(
+            pnlDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatasLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(pnlDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatasLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatasLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
+
+        tabPane.addTab("Datas", pnlDatas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1)
-                                .addGap(6, 6, 6)
-                                .addComponent(chkPagas))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(8, 8, 8)
-                                .addComponent(bntFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(jScrollPane1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(bntFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel1))
-                    .addComponent(chkPagas))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bntFiltrar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bntFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tabPane))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -205,8 +234,8 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        FrmContaPagarForm frm
-                = new FrmContaPagarForm(null, true, usuario);
+        FrmVendaForm frm
+                = new FrmVendaForm(null, true, this.usuario);
         frm.setLocationRelativeTo(null);
         frm.setVisible(true);
 
@@ -216,13 +245,13 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         try {
             if (tblDados.getSelectedRow() >= 0) {
-                Long idContaPagar = Long.parseLong(
-                        contaPagarTableModel.getValueAt(
+                Long idVenda = Long.parseLong(
+                        vendaTableModel.getValueAt(
                                 tblDados.getSelectedRow(), 0).toString()
                 );
-                FrmContaPagarForm frm
-                        = new FrmContaPagarForm(null, true);
-                frm.carregarContaPagar(idContaPagar);
+                FrmVendaForm frm
+                        = new FrmVendaForm(null, true);
+                frm.carregarVenda(idVenda);
                 frm.setLocationRelativeTo(null);
                 frm.setVisible(true);
 
@@ -243,7 +272,7 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void bntFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntFiltrarActionPerformed
-        buscaContaPagar();
+        buscaVenda();
     }//GEN-LAST:event_bntFiltrarActionPerformed
 
 
@@ -253,42 +282,51 @@ public class FrmContaPagarLista extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnRemover;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox chkPagas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pnlDatas;
+    private javax.swing.JPanel pnlNPedido;
+    private javax.swing.JTabbedPane tabPane;
     private javax.swing.JTable tblDados;
     private javax.swing.JFormattedTextField txtDataFinal;
     private javax.swing.JFormattedTextField txtDataInicial;
+    private javax.swing.JTextField txtNPedido;
     // End of variables declaration//GEN-END:variables
 
     private void carregarDados() {
-        contaPagarTableModel = new ContaPagarTableModel(
-                contaPagarController.findContasNaoPagasVencidasAteHoje()
+        vendaTableModel = new VendaTableModel(
+                vendaController.listar()
         );
-        tblDados.setModel(contaPagarTableModel);
-        contaPagarTableModel.fireTableDataChanged();
+        tblDados.setModel(vendaTableModel);
+        vendaTableModel.fireTableDataChanged();
     }
 
-    private void buscaContaPagar() {
-        try {
-            LocalDate dataInicial = LocalDate.parse(txtDataInicial.getText(), formatter);
-            LocalDate dataFinal = LocalDate.parse(txtDataFinal.getText(), formatter);
+    private void buscaVenda() {
+        if (tabPane.getSelectedIndex() == 0) {
+            vendaTableModel = new VendaTableModel(
+                    vendaController.findVendasByNumeroPedido(txtNPedido.getText())
+            );
+        } else if (tabPane.getSelectedIndex() == 1) {
+            try {
+                LocalDate dataInicial = LocalDate.parse(txtDataInicial.getText(), formatter);
+                LocalDate dataFinal = LocalDate.parse(txtDataFinal.getText(), formatter);
 
-            if (dataFinal.compareTo(dataInicial) >= 0) {
-                contaPagarTableModel = new ContaPagarTableModel(
-                        contaPagarController.findContasPagarByVencimento(
-                                dataInicial, dataFinal, chkPagas.isSelected())
-                );
-                tblDados.setModel(contaPagarTableModel);
-                contaPagarTableModel.fireTableDataChanged();
-            } else {
-                JOptionPane.showMessageDialog(this, "A data inicial deve ser anterior à data final!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+                if (dataFinal.compareTo(dataInicial) >= 0) {
+                    vendaTableModel = new VendaTableModel(
+                            vendaController.findVendasByData(dataInicial, dataFinal)
+                    );
+                } else {
+                    JOptionPane.showMessageDialog(this, "A data inicial deve ser anterior à data final!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(this, "Datas inválidas!", "Atenção!", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(this, "Datas inválidas!", "Atenção!", JOptionPane.ERROR_MESSAGE);
         }
+        tblDados.setModel(vendaTableModel);
+        vendaTableModel.fireTableDataChanged();
     }
+
 }

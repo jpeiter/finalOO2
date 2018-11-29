@@ -54,7 +54,7 @@ INSERT INTO CIDADE (nome, estado_id) values ('Sao Paulo', 25);
 INSERT INTO CIDADE (nome, estado_id) values ('Teresina', 18);
 INSERT INTO CIDADE (nome, estado_id) values ('Vitoria', 8);
 
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('a', '11111111111', 1500, 2, null, 'a', 'a', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('a', '11111111111', 1500, 2, null, 'a', '[B@c2ef46f', 0);
 INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Administrador', '00100200345', 10, 2, null, 'admin@admin.com', '123', 0);
 INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Teste', '00600700890', 10, 2, null, 'teste@teste.com', '123', 0);
 INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Jean Peiter', '10185092918', 10, 2, null, 'jpeiter15@gmail.com', 'batata', 0);
@@ -73,19 +73,22 @@ INSERT INTO produto (nome, descricao, valor, categoria_id) VALUES ('Smarpthone S
 INSERT INTO produto (nome, descricao, valor, categoria_id) VALUES ('Home Theater LG LHB655NW', 'O novo Home Theater LG LHB655NW possui 5.1 canais de áudio e 1000W RMS de potência,...', 1899.99, 2);
 INSERT INTO produto (nome, descricao, valor, categoria_id) VALUES ('Processador Core I9', 'Processador Intel Core I9 4.3Ghz...', 7099.99, 1);
 
-INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-03-20', '123456', 1);
+INSERT INTO venda(data, numeropedido, cliente_id, tipoPagamento, usuario_id) VALUES ('2018-03-20', '172839', 1, 3, 3);    
+INSERT INTO venda(data, numeropedido, cliente_id, tipoPagamento, usuario_id) VALUES ('2018-04-12', '976431', 2, 2, 2);
+INSERT INTO venda(data, numeropedido, cliente_id, tipoPagamento, usuario_id) VALUES ('2018-05-15', '481926', 3, 1, 1);
+
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (1, 225, 1, 1);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (3, 400, 2, 1);
-    
-INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-04-12', '2254', 2);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 2);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (4, 225, 1, 2);
-
-INSERT INTO venda(data, numeropedido, cliente_id) VALUES ('2018-05-15', '3214', 3);
 INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 3);
 
 INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('COPEL', '76483817000120', 8, '4632234365', 'Rodovia PR-280, s/n - Km 139');
 INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('SANEPAR', '76484013000145', 8, '4632724000', 'Tv. Clárice Soares Cerqueira, 185 - Centro, Pato Branco - PR');
 
-INSERT INTO contaPagar ( dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2018-11-24', null, 600, 0, 3, 1, 1);
-INSERT INTO contaPagar ( dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2017-01-01', '2018-01-01', 450, 450, 3, 1, 2);
+INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2018-11-24', null, 600, 0, 3, 1, 1);
+INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2017-01-01', '2018-01-01', 450, 450, 3, 1, 2);
+
+INSERT INTO contareceber (valor, venda_id, data, numeroRecibo, tipoRecebimento) values (625, 1, '2018-03-20', '999666333', 3);
+INSERT INTO contareceber (valor, venda_id, data, numeroRecibo, tipoRecebimento) values (1155, 2, '2018-04-12', '111222333', 2);
+INSERT INTO contareceber (valor, venda_id, data, numeroRecibo, tipoRecebimento) values (930, 3, '2018-11-28', '444555666', 1);

@@ -3,6 +3,7 @@ package test;
 import br.edu.utfpr.pb.trabalhofinal.controller.ClienteController;
 import br.edu.utfpr.pb.trabalhofinal.controller.ContaReceberController;
 import br.edu.utfpr.pb.trabalhofinal.controller.ProdutoController;
+import br.edu.utfpr.pb.trabalhofinal.controller.UsuarioController;
 import br.edu.utfpr.pb.trabalhofinal.controller.VendaController;
 import br.edu.utfpr.pb.trabalhofinal.controller.VendaProdutoController;
 import br.edu.utfpr.pb.trabalhofinal.enums.ETipoPagamento;
@@ -54,7 +55,7 @@ public class TesteVenda {
     public void tearDown() {
         Assert.assertEquals(vendaController.buscar(4L), venda);
         Assert.assertEquals(vendaProdutoController.buscar(6L), vendaProduto);
-        Assert.assertEquals(contaReceberController.buscar(1L), contaReceber);
+        Assert.assertEquals(contaReceberController.buscar(4L), contaReceber);
         System.out.println("Teste de venda finalizado!");
     }
 
@@ -65,7 +66,7 @@ public class TesteVenda {
             vendaProduto.setProduto(new ProdutoController().buscar(1L));
             vendaProduto.setQuantidade(2);
             vendaProduto.setValor(new ProdutoController().buscar(1L).getValor() * 2);
-            vendaProduto.setVenda(venda);
+            vendaProduto.setVenda(vendaController.buscar(3L));
             listaProdutosVendidos.add(vendaProduto);
             vendaProdutoController.salvar(vendaProduto);
         } catch (Exception ex) {
@@ -81,6 +82,8 @@ public class TesteVenda {
             venda.setCliente(new ClienteController().buscar(3L));
             venda.setData(LocalDate.now());
             venda.setVendaProdutos(listaProdutosVendidos);
+            venda.setTipoPagamento(ETipoPagamento.DINHEIRO);
+            venda.setUsuario(new UsuarioController().buscar(1L));
             vendaController.salvar(venda);
         } catch (Exception ex) {
             Logger.getLogger(TesteVenda.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,7 +93,7 @@ public class TesteVenda {
     public void criaContaReceber() {
         try {
             contaReceber.setData(venda.getData());
-            contaReceber.setNumeroRecibo(444);
+            contaReceber.setNumeroRecibo("444");
             contaReceber.setTipoRecebimento(ETipoPagamento.DINHEIRO);
             contaReceber.setValor(venda.getValorTotal());
             contaReceber.setVenda(vendaController.buscar(6L));

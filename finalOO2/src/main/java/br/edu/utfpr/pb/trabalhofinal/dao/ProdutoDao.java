@@ -26,4 +26,13 @@ public class ProdutoDao extends GenericDao<Produto, Long> {
         return query.getResultList();
     }
 
+    public List<Produto> findProdutoByNome(String nome) {
+        Query query = em.createQuery("SELECT p "
+                + "FROM Produto p "
+                + "WHERE p.nome LIKE :nome ORDER BY p.nome");
+        query.setParameter("nome", "%" + nome + "%");
+        query.setMaxResults(1);
+        return query.getResultList();
+    }
+
 }

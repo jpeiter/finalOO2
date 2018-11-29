@@ -22,6 +22,10 @@ public class ProdutoController extends GenericController<Produto, Long> {
         return this.produtoDao.findProdutosByNome(nome);
     }
 
+    public List<Produto> findProdutoByNome(String nome) {
+        return this.produtoDao.findProdutoByNome(nome);
+    }
+
     public List<Produto> findProdutosByValor(Double valor) {
         return this.produtoDao.findProdutosByValor(valor);
     }
