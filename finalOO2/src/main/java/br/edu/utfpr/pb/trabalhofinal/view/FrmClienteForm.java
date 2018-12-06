@@ -90,7 +90,7 @@ public class FrmClienteForm extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(460, 460));
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/cancelar.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class FrmClienteForm extends javax.swing.JDialog {
             }
         });
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/salvar.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,19 +121,8 @@ public class FrmClienteForm extends javax.swing.JDialog {
                 cmbEstadoItemStateChanged(evt);
             }
         });
-        cmbEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbEstadoActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("*Cidade:");
-
-        cmbCidade.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbCidadeItemStateChanged(evt);
-            }
-        });
 
         jLabel5.setText("*CPF:");
 
@@ -360,19 +349,10 @@ public class FrmClienteForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
         if (JOptionPane.showConfirmDialog(null, "Deseja cancelar?", "Atenção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void cmbCidadeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCidadeItemStateChanged
-
-    }//GEN-LAST:event_cmbCidadeItemStateChanged
-
-    private void cmbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoActionPerformed
-
-    }//GEN-LAST:event_cmbEstadoActionPerformed
 
     private void cmbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEstadoItemStateChanged
         cmbModelCidade.removeAllElements();

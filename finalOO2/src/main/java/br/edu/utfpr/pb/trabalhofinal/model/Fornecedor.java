@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,15 +29,16 @@ public class Fornecedor implements AbstractModel {
     private Long id;
 
     @Column(name = "nome", length = 100, nullable = false)
-    @NotEmpty(message = "O campo 'Nome' deve ser preenchido.")
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String nome;
 
     @Column(name = "cnpj", length = 18, nullable = false)
-    @NotEmpty(message = "O campo 'CNPJ' deve ser preenchido.")
+    @NotNull(message = "Informe o CNPJ antes de salvar.")
     private String cnpj;
 
     @ManyToOne()
     @JoinColumn(name = "cidade_id", referencedColumnName = "id")
+    @NotNull(message = "Selecione a cidade antes de salvar.")
     private Cidade cidade;
 
     @Column(name = "telefone", length = 14, nullable = true)

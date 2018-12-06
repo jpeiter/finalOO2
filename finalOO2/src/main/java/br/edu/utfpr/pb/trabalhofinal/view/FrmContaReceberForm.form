@@ -210,7 +210,6 @@
         <Component class="javax.swing.JTextField" name="txtCliente">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="NEYMAR DA SILVA SAURO DOS SANTO"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>

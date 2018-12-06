@@ -3,6 +3,7 @@ package br.edu.utfpr.pb.trabalhofinal.view;
 import br.edu.utfpr.pb.trabalhofinal.controller.UsuarioController;
 import br.edu.utfpr.pb.trabalhofinal.enums.EPermissao;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
+import br.edu.utfpr.pb.trabalhofinal.util.StringUtil;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.nio.file.FileSystems;
@@ -77,7 +78,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
         setTitle("Cadastro de Usuário");
         setResizable(false);
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/salvar.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +86,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/cancelar.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +137,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
         lblFoto.setText("FOTO");
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnCarregarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/pic.png"))); // NOI18N
         btnCarregarFoto.setText("Carregar foto...");
         btnCarregarFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +169,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
                         .addGap(37, 37, 37))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))))
+                        .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +196,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
                         .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCarregarFoto)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dados Pessoais", jPanel1);
@@ -229,7 +231,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
                     .addGroup(pnlUserLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbPermissao, 0, 135, Short.MAX_VALUE))
+                        .addComponent(cmbPermissao, 0, 171, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUserLayout.createSequentialGroup()
                         .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -263,7 +265,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
                 .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(txtComissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -441,7 +443,7 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
         txtCpf.setText(usuario.getCpf());
         txtEmail.setText(usuario.getEmail());
         txtSenha.setText(usuario.getSenha());
-        cmbPermissao.setSelectedItem(usuario.getPermissoes());
+        cmbPermissao.setSelectedItem(usuario.getPermissao());
         txtSalario.setText(usuario.getSalario().toString());
         txtComissao.setText(usuario.getComissao().toString());
 
@@ -471,10 +473,10 @@ public class FrmUsuarioForm extends javax.swing.JDialog {
         usuario.setCpf(
                 txtCpf.getText().replaceAll("[-.]", "")
         );
-        usuario.setSenha(txtSenha.getText());
+        usuario.setSenha(StringUtil.cripto(txtSenha.getText()));
         usuario.setSalario(Double.parseDouble(txtSalario.getText()));
         usuario.setComissao(Double.parseDouble(txtComissao.getText()));
-        usuario.setPermissoes((EPermissao) cmbPermissao.getSelectedItem());
+        usuario.setPermissao((EPermissao) cmbPermissao.getSelectedItem());
 
         usuarioController.salvar(usuario);
     }

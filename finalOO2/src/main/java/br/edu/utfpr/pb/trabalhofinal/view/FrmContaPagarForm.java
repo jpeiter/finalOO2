@@ -76,7 +76,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/cancelar.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +84,7 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
             }
         });
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/salvar.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,7 +267,6 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
         if (JOptionPane.showConfirmDialog(null, "Deseja cancelar?", "Atenção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             this.dispose();
         }
@@ -386,8 +385,8 @@ public class FrmContaPagarForm extends javax.swing.JDialog {
                 ? null : LocalDate.parse(txtVencimento.getText(), formatter));
         contaPagar.setTipoPagamento((ETipoPagamento) cmbTipoPagamento.getSelectedItem());
         contaPagar.setValor(Double.parseDouble(txtValor.getText().replace("R$", "").trim()));
-        contaPagar.setValor(txtValor.getText().replace("R$", "").trim().isEmpty() ? null
-                : Double.parseDouble(txtValor.getText().replace("R$", "").trim()));
+        contaPagar.setValorPago(txtValorPago.getText().replace("R$", "").trim().isEmpty() ? null
+                : Double.parseDouble(txtValorPago.getText().replace("R$", "").trim()));
 
         contaPagarController.salvar(contaPagar);
     }

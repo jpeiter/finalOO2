@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -22,13 +21,13 @@ public class Cidade implements AbstractModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "O campo nome deve ser preenchido.")
-    @NotNull(message = "O campo nome deve ser preenchido.")
     @Column(name = "nome", length = 50, nullable = false)
+    @NotNull(message = "O campo nome deve ser preenchido.")
     private String nome;
 
     @ManyToOne()
     @JoinColumn(name = "estado_id", referencedColumnName = "id")
+    @NotNull(message = "Selecione o estado antes de salvar.")
     private Estado estado;
 
     public Long getId() {

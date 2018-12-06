@@ -52,6 +52,7 @@ public class FrmContaReceberLista extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblDados);
 
+        btnDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/buscar16.png"))); // NOI18N
         btnDetalhes.setText("Ver Detalhes");
         btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +79,7 @@ public class FrmContaReceberLista extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Filtrar por cliente:");
 
-        bntFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/buscar.png"))); // NOI18N
+        bntFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/buscar.png"))); // NOI18N
         bntFiltrar.setText("Filtrar");
         bntFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

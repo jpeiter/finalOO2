@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "produto")
@@ -22,6 +23,7 @@ public class Produto implements AbstractModel {
     private Long id;
 
     @Column(name = "nome", length = 50, nullable = false)
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String nome;
 
     @Column(name = "descricao", length = 500, nullable = true)
@@ -34,6 +36,7 @@ public class Produto implements AbstractModel {
 
     @ManyToOne()
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @NotNull(message = "Selecione a categoria antes de salvar.")
     private Categoria categoria;
 
     public Long getId() {

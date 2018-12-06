@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "cliente", uniqueConstraints = {
@@ -29,15 +29,16 @@ public class Cliente implements AbstractModel {
     private Long id;
 
     @Column(name = "nome", length = 50, nullable = false)
-    @NotEmpty(message = "O campo 'Nome' deve ser preenchido.")
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String nome;
 
     @Column(name = "cpf", length = 14, nullable = false)
-    @NotEmpty(message = "O campo 'CPF' deve ser preenchido.")
+    @NotNull(message = "Informe o CPF antes de salvar.")
     private String cpf;
 
     @ManyToOne()
     @JoinColumn(name = "cidade_id", referencedColumnName = "id")
+    @NotNull(message = "Informe a cidade antes de salvar.")
     private Cidade cidade;
 
     @OneToMany(mappedBy = "cliente",
@@ -47,11 +48,11 @@ public class Cliente implements AbstractModel {
     private List<Contato> contatos;
 
     @Column(name = "endereco", nullable = false)
-    @NotEmpty(message = "O campo 'endereco' deve ser preenchido.")
+    @NotNull(message = "Informe o endereço antes de salvar.")
     private String endereco;
 
     @Column(name = "cep", nullable = false)
-    @NotEmpty(message = "O campo 'CEP' deve ser preenchido.")
+    @NotNull(message = "Informe o CEP antes de salvar.")
     private String cep;
 
     public Cliente() {

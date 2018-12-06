@@ -31,4 +31,6 @@ public class VendaDao extends GenericDao<Venda, Long> {
         query.setParameter("dataFinal", dataFinal);
         return query.getResultList();
     }
+
+    
 }

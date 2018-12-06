@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "categoria")
@@ -21,6 +21,7 @@ public class Categoria implements AbstractModel {
     private Long id;
 
     @Column(name = "descricao", length = 50, nullable = false)
+    @NotNull(message = "Informe a descrição da cagetoria antes de salvar.")
     private String descricao;
 
     public Categoria() {

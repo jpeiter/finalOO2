@@ -34,11 +34,11 @@ public class VendaProdutoTableModel extends AbstractTableModel {
             case 0:
                 return lista.get(rowIndex).getId();
             case 1:
-                return lista.get(rowIndex).getProduto();
+                return lista.get(rowIndex).getProduto().getNome();
             case 2:
                 return lista.get(rowIndex).getQuantidade();
             case 3:
-                return lista.get(rowIndex).getVenda().getValorTotal();
+                return lista.get(rowIndex).getProduto().getValor() * lista.get(rowIndex).getQuantidade();
             default:
                 return null;
         }

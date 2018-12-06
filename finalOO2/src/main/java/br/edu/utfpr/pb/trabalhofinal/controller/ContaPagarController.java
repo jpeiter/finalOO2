@@ -4,6 +4,7 @@ import br.edu.utfpr.pb.trabalhofinal.dao.ContaPagarDao;
 import br.edu.utfpr.pb.trabalhofinal.dao.GenericDao;
 import br.edu.utfpr.pb.trabalhofinal.model.ContaPagar;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class ContaPagarController extends GenericController<ContaPagar, Long> {
@@ -25,6 +26,14 @@ public class ContaPagarController extends GenericController<ContaPagar, Long> {
 
     public List<ContaPagar> findContasNaoPagasVencidasAteHoje() {
         return this.contaPagarDao.findContasNaoPagasVencidasAteHoje();
+    }
+
+    public List<Object[]> valoresPagosByTipoRecebimento() {
+        return this.contaPagarDao.valoresPagosByTipoRecebimento();
+    }
+
+    public List<Object[]> saidaCaixa(Date dataInicial, Date dataFinal) {
+        return this.contaPagarDao.saidaCaixa(dataInicial, dataFinal);
     }
 
 }

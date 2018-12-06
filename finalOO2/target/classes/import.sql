@@ -54,10 +54,12 @@ INSERT INTO CIDADE (nome, estado_id) values ('Sao Paulo', 25);
 INSERT INTO CIDADE (nome, estado_id) values ('Teresina', 18);
 INSERT INTO CIDADE (nome, estado_id) values ('Vitoria', 8);
 
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('a', '11111111111', 1500, 2, null, 'a', '[B@c2ef46f', 0);
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Administrador', '00100200345', 10, 2, null, 'admin@admin.com', '123', 0);
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Teste', '00600700890', 10, 2, null, 'teste@teste.com', '123', 0);
-INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Jean Peiter', '10185092918', 10, 2, null, 'jpeiter15@gmail.com', 'batata', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('a', '11111111111', 1500, 2, null, 'a', 'batata', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Administrador', '00100200345', 10, 2, null, 'admin@admin.com', 'F4610AA514477222AFAC2B77F971D069780CA2846F375849F3DFA3C0047EBBD1', 0); --senha: batata
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Teste', '00600700890', 10, 3, null, 'teste@teste.com', '123', 0);
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Jean Peiter', '10185092918', 4000, 6, null, 'jpeiter15@gmail.com', 'F4610AA514477222AFAC2B77F971D069780CA2846F375849F3DFA3C0047EBBD1', 0); --senha: batata
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Financeiro', '12345678914', 1000, 2, null, 'fin@nceiro.com', 'F4610AA514477222AFAC2B77F971D069780CA2846F375849F3DFA3C0047EBBD1', 2); --senha: batata
+INSERT INTO usuario (nome, cpf, salario, comissao, foto, email, senha, permissoes) VALUES ('Vendedor', '98765432196', 1000, 2, null, 'vendedor@vendas.com', 'F4610AA514477222AFAC2B77F971D069780CA2846F375849F3DFA3C0047EBBD1', 1); --senha: batata
 
 INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ('71014760070','Barack Hussein Obama II', 'Rua dos Bobos nº 0, Bairro Top', '85501020', 6);
 INSERT INTO cliente (cpf, nome, endereco, cep, cidade_id) VALUES ( '52545712094' ,'Abraham Lincoln', 'Avenida Tupy 476, Centro', '85504400', 12);
@@ -77,17 +79,18 @@ INSERT INTO venda(data, numeropedido, cliente_id, tipoPagamento, usuario_id) VAL
 INSERT INTO venda(data, numeropedido, cliente_id, tipoPagamento, usuario_id) VALUES ('2018-04-12', '976431', 2, 2, 2);
 INSERT INTO venda(data, numeropedido, cliente_id, tipoPagamento, usuario_id) VALUES ('2018-05-15', '481926', 3, 1, 1);
 
-INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (1, 225, 1, 1);
-INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (3, 400, 2, 1);
-INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 2);
-INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (4, 225, 1, 2);
-INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 930, 3, 3);
+INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (1, 199.49, 1, 1);
+INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (3, 6297, 2, 1);
+INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 398.98, 3, 2);
+INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (4, 797.96, 1, 2);
+INSERT INTO vendaproduto(quantidade, valor, produto_id, venda_id) VALUES (2, 14199.98, 4, 3);
 
 INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('COPEL', '76483817000120', 8, '4632234365', 'Rodovia PR-280, s/n - Km 139');
 INSERT INTO fornecedor (nome, cnpj, cidade_id, telefone, endereco)VALUES ('SANEPAR', '76484013000145', 8, '4632724000', 'Tv. Clárice Soares Cerqueira, 185 - Centro, Pato Branco - PR');
 
-INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2018-11-24', null, 600, 0, 3, 1, 1);
-INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2017-01-01', '2018-01-01', 450, 450, 3, 1, 2);
+INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2018-11-24', '2018-12-05', 600, 559, 1, 1, 1);
+INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2017-01-01', '2018-01-01', 450, 450, 2, 1, 2);
+INSERT INTO contapagar (dataVencimento, dataPagamento, valor, valorPago, tipoPagamento, usuario_id, fornecedor_id) values ('2017-09-01', '2018-06-01', 1500, 1500, 3, 3, 1);
 
 INSERT INTO contareceber (valor, venda_id, data, numeroRecibo, tipoRecebimento) values (625, 1, '2018-03-20', '999666333', 3);
 INSERT INTO contareceber (valor, venda_id, data, numeroRecibo, tipoRecebimento) values (1155, 2, '2018-04-12', '111222333', 2);

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,15 +30,18 @@ public class ContaPagar implements AbstractModel {
 
     @ManyToOne()
     @JoinColumn(name = "fornecedor_id", referencedColumnName = "id")
+    @NotNull(message = "Informe o fornecedor antes de salvar.")
     private Fornecedor fornecedor;
 
     @Column(name = "dataVencimento", nullable = false)
+    @NotNull(message = "Informe o vencimento antes de salvar.")
     private LocalDate dataVencimento;
 
     @Column(name = "dataPagamento", nullable = true)
     private LocalDate dataPagamento;
 
     @Column(name = "valor", nullable = false)
+    @NotNull(message = "Informe o valor antes de salvar.")
     private Double valor;
 
     @Column(name = "valorPago", nullable = true)
@@ -45,6 +49,7 @@ public class ContaPagar implements AbstractModel {
 
     @Convert(converter = TipoPagamentoConverter.class)
     @Column(name = "tipoPagamento", nullable = false)
+    @NotNull(message = "Informe a forma de pagamento antes de salvar.")
     private ETipoPagamento tipoPagamento;
 
     @ManyToOne

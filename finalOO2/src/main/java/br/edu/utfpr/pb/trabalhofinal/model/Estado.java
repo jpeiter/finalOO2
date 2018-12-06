@@ -7,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "estado")
@@ -20,12 +21,13 @@ public class Estado implements AbstractModel {
     @Column(name = "id")
     private Long id;
 
-    @NotEmpty(message = "O campo 'nome' deve ser preenchido.")
     @Column(name = "nome", length = 50, nullable = false)
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String nome;
 
-    @NotEmpty(message = "O campo 'sigla' deve ser preenchido.")
     @Column(name = "sigla", length = 2, nullable = false)
+    @NotNull(message = "Informe a sigla antes de salvar.")
+    @Length(max = 2, message = "A sigla deve conter no máximo duas letras.")
     private String sigla;
 
     public Estado() {

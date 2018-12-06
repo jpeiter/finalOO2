@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "venda")
@@ -34,6 +35,7 @@ public class Venda implements AbstractModel, Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    @NotNull(message = "Informe o cliente antes de salvar.")
     private Cliente cliente;
 
     @OneToMany(mappedBy = "venda",
@@ -52,8 +54,7 @@ public class Venda implements AbstractModel, Serializable {
     }
 
     public Double getValorTotal() {
-        return vendaProdutos.stream().mapToDouble(vp -> vp.getValor()
-                * vp.getQuantidade()).sum();
+        return vendaProdutos.stream().mapToDouble(vp -> vp.getValor() * vp.getQuantidade()).sum();
     }
 
     public List<VendaProduto> getVendaProdutos() {

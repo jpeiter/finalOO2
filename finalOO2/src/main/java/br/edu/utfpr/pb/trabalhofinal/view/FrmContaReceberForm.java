@@ -17,7 +17,6 @@ public class FrmContaReceberForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         contaReceberController = new ContaReceberController();
-
     }
 
     /**
@@ -90,7 +89,6 @@ public class FrmContaReceberForm extends javax.swing.JDialog {
         txtFormaRecebimento.setEnabled(false);
 
         txtCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCliente.setText("NEYMAR DA SILVA SAURO DOS SANTO");
         txtCliente.setEnabled(false);
 
         txtRecibo.setEnabled(false);
@@ -266,7 +264,7 @@ public class FrmContaReceberForm extends javax.swing.JDialog {
         txtRecibo.setText(contaReceber.getNumeroRecibo());
         txtData.setText(contaReceber.getData().format(DateTimeFormatter.ofPattern("d/MM/yyyy")));
         txtFormaRecebimento.setText(contaReceber.getTipoRecebimento().name());
-        txtValor.setText(contaReceber.getValor().toString().format("R$ "));
+        txtValor.setText(contaReceber.getValor().toString().format("R$ ####.##"));
         txtUsuario.setText(contaReceber.getVenda().getUsuario().getNome());
     }
 

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="menuFinanceiro">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/financeiro.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Financeiro"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuContasPagar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Contas a Pagar"/>
+                <Property name="text" type="java.lang.String" value="Contas a Pagar..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuContasPagarActionPerformed"/>
@@ -19,7 +22,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuContaReceber">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Contas a Receber"/>
+                <Property name="text" type="java.lang.String" value="Contas a Receber..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuContaReceberActionPerformed"/>
@@ -27,8 +30,11 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuFonecedor">
+        <Menu class="javax.swing.JMenu" name="menuGerencial">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/cog.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Gerencial"/>
           </Properties>
           <SubComponents>
@@ -39,26 +45,11 @@
                 <Property name="text" type="java.lang.String" value="Cadastros"/>
               </Properties>
               <SubComponents>
-                <Menu class="javax.swing.JMenu" name="jMenu7">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Categorias"/>
-                  </Properties>
-                  <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="menuCategoria">
-                      <Properties>
-                        <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                          <KeyStroke key="Shift+C"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Categorias"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCategoriaActionPerformed"/>
-                      </Events>
-                    </MenuItem>
-                  </SubComponents>
-                </Menu>
                 <Menu class="javax.swing.JMenu" name="jMenu5">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/geo.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Locais"/>
                   </Properties>
                   <SubComponents>
@@ -67,7 +58,7 @@
                         <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                           <KeyStroke key="Shift+Ctrl+C"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cidade"/>
+                        <Property name="text" type="java.lang.String" value="Cidade..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCidadeActionPerformed"/>
@@ -78,7 +69,7 @@
                         <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                           <KeyStroke key="Shift+Ctrl+E"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Estado"/>
+                        <Property name="text" type="java.lang.String" value="Estado..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuEstadoActionPerformed"/>
@@ -88,6 +79,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="jMenu4">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/usuario.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Pessoas"/>
                   </Properties>
                   <SubComponents>
@@ -96,7 +90,7 @@
                         <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                           <KeyStroke key="Shift+Alt+C"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Clientes"/>
+                        <Property name="text" type="java.lang.String" value="Clientes..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuClienteActionPerformed"/>
@@ -107,7 +101,7 @@
                         <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                           <KeyStroke key="Shift+Ctrl+F"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Fornecedor"/>
+                        <Property name="text" type="java.lang.String" value="Fornecedor..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuFornecedorActionPerformed"/>
@@ -118,7 +112,7 @@
                         <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                           <KeyStroke key="Shift+Ctrl+U"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+                        <Property name="text" type="java.lang.String" value="Usu&#xe1;rios..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuUsuarioActionPerformed"/>
@@ -128,6 +122,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="jMenu6">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/supply.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Produtos"/>
                   </Properties>
                   <SubComponents>
@@ -136,10 +133,21 @@
                         <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                           <KeyStroke key="Shift+Ctrl+P"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Produto"/>
+                        <Property name="text" type="java.lang.String" value="Produto..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuProdutoActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="menuCategoria">
+                      <Properties>
+                        <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                          <KeyStroke key="Shift+C"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Categorias..."/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCategoriaActionPerformed"/>
                       </Events>
                     </MenuItem>
                   </SubComponents>
@@ -148,14 +156,20 @@
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="menuOperacional">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/cart.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Operacional"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuVendas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Vendas"/>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F8"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Vendas..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuVendasActionPerformed"/>
@@ -165,23 +179,100 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuRelatorios">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/relatorio.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuProdtCateg">
+            <MenuItem class="javax.swing.JMenuItem" name="relComissaoUsers">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Produtos por Categoria"/>
+                <Property name="text" type="java.lang.String" value="Comissao/Usu&#xe1;rio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuProdtCategActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relComissaoUsersActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuRelVendas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Vendas"/>
+                <Property name="text" type="java.lang.String" value="Recbibo Venda"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuRelVendasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menu2aVia">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="2&#xaa; via recibo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu2aViaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuRelContasReceber">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Contas a Receber"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuRelContasReceberActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vendas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuGrafs">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/chart.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Gr&#xe1;ficos"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuGrafProd">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Produtos/M&#xea;s"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGrafProdActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuGrafComissao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Comiss&#xe3;o/Usu&#xe1;rio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGrafComissaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuGrafPagamentos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valores Pagos/Forma Pagto."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGrafPagamentosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuGrafValorRecb">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valores Recebidos/Forma Pagto."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGrafValorRecbActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuGrafInOut">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Entradas x Sa&#xed;das / Per&#xed;odo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGrafInOutActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -191,6 +282,10 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Snow&apos;s Store"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="0" green="0" red="ff" type="rgb"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -227,12 +322,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="461" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="263" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

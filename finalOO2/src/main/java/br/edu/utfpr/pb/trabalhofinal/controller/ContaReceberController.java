@@ -3,6 +3,7 @@ package br.edu.utfpr.pb.trabalhofinal.controller;
 import br.edu.utfpr.pb.trabalhofinal.dao.ContaReceberDao;
 import br.edu.utfpr.pb.trabalhofinal.dao.GenericDao;
 import br.edu.utfpr.pb.trabalhofinal.model.ContaReceber;
+import java.util.Date;
 import java.util.List;
 
 public class ContaReceberController extends GenericController<ContaReceber, Long> {
@@ -24,5 +25,13 @@ public class ContaReceberController extends GenericController<ContaReceber, Long
 
     public List<ContaReceber> findContasReceberHoje() {
         return this.contaReceberDao.findContasReceberHoje();
+    }
+
+    public List<Object[]> valoresRecebidosByTipoRecebimento(Date dataInicial, Date dataFinal) {
+        return this.contaReceberDao.valoresRecebidosByTipoRecebimento(dataInicial, dataFinal);
+    }
+
+    public List<Object[]> entradaCaixa(Date dataInicial, Date dataFinal) {
+        return this.contaReceberDao.entradaCaixa(dataInicial, dataFinal);
     }
 }

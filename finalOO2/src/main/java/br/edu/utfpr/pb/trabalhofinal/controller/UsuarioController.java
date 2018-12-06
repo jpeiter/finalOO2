@@ -3,6 +3,7 @@ package br.edu.utfpr.pb.trabalhofinal.controller;
 import br.edu.utfpr.pb.trabalhofinal.dao.UsuarioDao;
 import br.edu.utfpr.pb.trabalhofinal.dao.GenericDao;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
+import java.util.Date;
 import java.util.List;
 
 public class UsuarioController extends GenericController<Usuario, Long> {
@@ -26,4 +27,7 @@ public class UsuarioController extends GenericController<Usuario, Long> {
         return this.usuarioDao.findByNome(nome);
     }
 
+    public List<Object[]> getComissaoUsuarios(Date dataInicial, Date dataFinal) {
+        return this.usuarioDao.getComissaoUsuarios(dataInicial, dataFinal);
+    }
 }

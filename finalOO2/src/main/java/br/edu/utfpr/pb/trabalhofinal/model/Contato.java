@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -24,9 +25,11 @@ public class Contato implements AbstractModel {
     private Long id;
 
     @Column(length = 25, nullable = false)
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String nome;
 
-    @Column(length = 11, nullable = false)
+    @Column(length = 14, nullable = false)
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String telefone;
 
     @ManyToOne()

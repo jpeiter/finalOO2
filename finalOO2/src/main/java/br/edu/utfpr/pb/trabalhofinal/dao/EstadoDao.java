@@ -14,9 +14,9 @@ public class EstadoDao extends GenericDao<Estado, Long> {
         Query query = em.createQuery("SELECT e "
                 + "FROM Estado e "
                 + "WHERE e.nome LIKE :nomeSigla "
-                + "OR e.sigla LIKE :nomeSigla"
+                + "OR e.sigla LIKE :nomeSigla "
                 + "ORDER BY e.nome");
-        query.setParameter("nome", "%" + nomeSigla + "%");
+        query.setParameter("nomeSigla", "%" + nomeSigla + "%");
 
         return query.getResultList();
     }

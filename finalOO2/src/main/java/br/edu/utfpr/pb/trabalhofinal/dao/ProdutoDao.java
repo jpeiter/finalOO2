@@ -2,6 +2,7 @@ package br.edu.utfpr.pb.trabalhofinal.dao;
 
 import br.edu.utfpr.pb.trabalhofinal.model.Produto;
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 public class ProdutoDao extends GenericDao<Produto, Long> {
@@ -26,13 +27,15 @@ public class ProdutoDao extends GenericDao<Produto, Long> {
         return query.getResultList();
     }
 
-    public List<Produto> findProdutoByNome(String nome) {
+    public Produto findProdutoByNome(String nome) throws NoResultException {
         Query query = em.createQuery("SELECT p "
                 + "FROM Produto p "
                 + "WHERE p.nome LIKE :nome ORDER BY p.nome");
         query.setParameter("nome", "%" + nome + "%");
         query.setMaxResults(1);
-        return query.getResultList();
+        return (Produto) query.getSingleResult();
     }
+
+    
 
 }

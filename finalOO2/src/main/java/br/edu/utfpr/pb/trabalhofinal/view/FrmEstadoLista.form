@@ -78,10 +78,10 @@
 
           <Layout>
             <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnInserir" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnInserir" min="-2" pref="112" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnEditar" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -101,11 +101,11 @@
                       <Component id="jScrollPane1" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnInserir" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnInserir" alignment="3" max="32767" attributes="0"/>
                               <Component id="btnEditar" alignment="3" max="32767" attributes="0"/>
-                              <Component id="btnRemover" alignment="3" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="btnRemover" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
@@ -116,7 +116,7 @@
             <Component class="javax.swing.JButton" name="btnInserir">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/edu/utfpr/pb/atividadeswing/image/adicionar.png"/>
+                  <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/adicionar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inserir"/>
               </Properties>
@@ -127,7 +127,7 @@
             <Component class="javax.swing.JButton" name="btnEditar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/edu/utfpr/pb/atividadeswing/image/editar.png"/>
+                  <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/editar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
@@ -138,7 +138,7 @@
             <Component class="javax.swing.JButton" name="btnRemover">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/edu/utfpr/pb/atividadeswing/image/remover.png"/>
+                  <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/remover.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Remover"/>
               </Properties>
@@ -171,6 +171,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnFiltrar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/edu/utfpr/pb/finalOO2/image/buscar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Filtrar"/>
           </Properties>
           <Events>

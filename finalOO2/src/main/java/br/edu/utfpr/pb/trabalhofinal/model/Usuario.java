@@ -15,13 +15,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usuario")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findByEmailAndSenha",
             query = "Select u from Usuario u "
-            + " where u.email=:email AND u.senha=:senha")
+            + " where u.email = :email AND u.senha = :senha")
     ,
     @NamedQuery(name = "Usuario.findAll",
             query = "Select u from Usuario u")
@@ -30,22 +31,28 @@ public class Usuario implements AbstractModel, Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FIND_ALL = "Usuario.findAll";
-    public static final String FIND_BY_EMAIL_AND_SENHA
-            = "Usuario.findByEmailAndSenha";
+    public static final String FIND_BY_EMAIL_AND_SENHA = "Usuario.findByEmailAndSenha";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 100, nullable = false)
+    @NotNull(message = "Informe o nome antes de salvar.")
     private String nome;
 
     @Column(length = 14, nullable = false)
+    @NotNull(message = "Informe o CPF antes de salvar.")
     private String cpf;
 
+    @Column(nullable = false)
     @DecimalMin(value = "0.01", message = "O salário deve ser maior que R$ 0.00.")
+    @NotNull(message = "Informe o salário antes de salvar.")
     private Double salario;
 
-    @DecimalMin(value = "0.01")
+    @Column(nullable = false)
+    @DecimalMin(value = "0.01", message = "O salário deve ser maior que 0.")
+    @NotNull(message = "Informe a comissão antes de salvar.")
     private Double comissao;
 
     @Lob
@@ -53,13 +60,16 @@ public class Usuario implements AbstractModel, Serializable {
     private byte[] foto;
 
     @Column(length = 100, nullable = false)
+    @NotNull(message = "Informe o e-mail antes de salvar.")
     private String email;
 
     @Column(length = 512, nullable = false)
+    @NotNull(message = "Informe a senha antes de salvar.")
     private String senha;
 
     @Convert(converter = PermissaoConverter.class)
     @Column(name = "permissoes", nullable = false)
+    @NotNull(message = "Informe o tipo de permissão antes de salvar.")
     private EPermissao permissoes;
 
     public Long getId() {
@@ -102,11 +112,11 @@ public class Usuario implements AbstractModel, Serializable {
         this.comissao = comissao;
     }
 
-    public EPermissao getPermissoes() {
+    public EPermissao getPermissao() {
         return permissoes;
     }
 
-    public void setPermissoes(EPermissao permissoes) {
+    public void setPermissao(EPermissao permissoes) {
         this.permissoes = permissoes;
     }
 

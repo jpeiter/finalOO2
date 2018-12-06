@@ -3,7 +3,6 @@ package br.edu.utfpr.pb.trabalhofinal.util;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import org.bouncycastle.util.encoders.Hex;
 
 /**
  *
@@ -12,16 +11,18 @@ import org.bouncycastle.util.encoders.Hex;
 public class StringUtil {
 
     public static String cripto(String string) {
-        String generatedPassword = null;
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] bytes = md.digest(string.getBytes(StandardCharsets.UTF_8));
-            generatedPassword = Hex.encode(bytes).toString();
+
+            StringBuilder hash = new StringBuilder();
+            for (byte _byte : bytes) {
+                hash.append(String.format("%02X", 0xFF & _byte));
+            }
+            return hash.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return generatedPassword;
+        return null;
     }
-
 }

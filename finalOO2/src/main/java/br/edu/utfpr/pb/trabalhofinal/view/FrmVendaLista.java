@@ -1,13 +1,15 @@
 package br.edu.utfpr.pb.trabalhofinal.view;
 
 import br.edu.utfpr.pb.trabalhofinal.controller.VendaController;
+import br.edu.utfpr.pb.trabalhofinal.enums.EPermissao;
 import br.edu.utfpr.pb.trabalhofinal.model.Usuario;
+import br.edu.utfpr.pb.trabalhofinal.relatorio.Relatorios;
 import br.edu.utfpr.pb.trabalhofinal.tableModel.VendaTableModel;
+import br.edu.utfpr.pb.trabalhofinal.util.UserSession;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -23,6 +25,10 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
     public FrmVendaLista(Usuario usuario) {
         initComponents();
         formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        UserSession.getInstance().setUsuarioLogado(usuario);
+        UserSession sessao = UserSession.getInstance();
+
+        btnInserir.setEnabled(!sessao.temPermissao(EPermissao.FINANCEIRO));
 
         this.usuario = usuario;
         txtDataInicial.setText(LocalDate.now().withDayOfMonth(1).format(formatter));
@@ -46,8 +52,8 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
         tblDados = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnInserir = new javax.swing.JButton();
-        btnRemover = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        btnDetalhes = new javax.swing.JButton();
+        btn2aVia = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bntFiltrar = new javax.swing.JButton();
         tabPane = new javax.swing.JTabbedPane();
@@ -73,7 +79,7 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblDados);
 
-        btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/adicionar.png"))); // NOI18N
+        btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/adicionar.png"))); // NOI18N
         btnInserir.setText("Nova Venda");
         btnInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,14 +87,19 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/remover.png"))); // NOI18N
-        btnRemover.setText("Remover");
-
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/editar.png"))); // NOI18N
-        btnEditar.setText("VER DETALHES");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/buscar16.png"))); // NOI18N
+        btnDetalhes.setText("VER DETALHES");
+        btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                btnDetalhesActionPerformed(evt);
+            }
+        });
+
+        btn2aVia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/relatorio.png"))); // NOI18N
+        btn2aVia.setText("2ª Via Recibo");
+        btn2aVia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2aViaActionPerformed(evt);
             }
         });
 
@@ -100,9 +111,9 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(btnInserir)
                 .addGap(18, 18, 18)
-                .addComponent(btnEditar)
+                .addComponent(btnDetalhes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRemover)
+                .addComponent(btn2aVia)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -110,15 +121,15 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnInserir)
-                    .addComponent(btnRemover))
+                    .addComponent(btnDetalhes)
+                    .addComponent(btnInserir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btn2aVia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Filtrar por:");
 
-        bntFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/atividadeswing/image/buscar.png"))); // NOI18N
+        bntFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/utfpr/pb/finalOO2/image/buscar.png"))); // NOI18N
         bntFiltrar.setText("Filtrar");
         bntFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,19 +211,18 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(bntFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jLabel1))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bntFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +252,7 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
         carregarDados();
     }//GEN-LAST:event_btnInserirActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
         try {
             if (tblDados.getSelectedRow() >= 0) {
                 Long idVenda = Long.parseLong(
@@ -269,18 +279,34 @@ public class FrmVendaLista extends javax.swing.JInternalFrame {
                     "Atenção",
                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnEditarActionPerformed
+    }//GEN-LAST:event_btnDetalhesActionPerformed
 
     private void bntFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntFiltrarActionPerformed
         buscaVenda();
     }//GEN-LAST:event_bntFiltrarActionPerformed
 
+    private void btn2aViaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2aViaActionPerformed
+        if (tblDados.getSelectedRow() >= 0) {
+            Long idVenda = Long.parseLong(
+                    vendaTableModel.getValueAt(
+                            tblDados.getSelectedRow(), 0).toString()
+            );
+            new Relatorios().recibo2aVia(idVenda);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um registro!",
+                    "Atenção",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btn2aViaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntFiltrar;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btn2aVia;
+    private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnInserir;
-    private javax.swing.JButton btnRemover;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
